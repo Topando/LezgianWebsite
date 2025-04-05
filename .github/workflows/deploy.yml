@@ -23,7 +23,7 @@ jobs:
           script: |
             if [ ! -d "/root/LezgianWebsite" ]; then
               cd /root
-              git clone https://github.com/Topando/LezgianWebsite.git
+              git clone https://Topando:${{ secrets.GH_DEPLOY_TOKEN }}@github.com/Topando/LezgianWebsite.git
             fi
             cd /root/LezgianWebsite
             git pull origin main
