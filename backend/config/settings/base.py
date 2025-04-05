@@ -4,7 +4,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 INSTALLED_APPS = [
-    'grappelli',
+    'jazzmin',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -73,11 +73,12 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_URL = os.getenv('STATIC_URL')
 MEDIA_URL = os.getenv('MEDIA_URL')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-CKEDITOR_UPLOAD_PATH = os.getenv('CKEDITOR_UPLOAD_PATH')
+STATIC_URL = '/static/'
 
+STATIC_ROOT = '/app/static'
+
+CKEDITOR_UPLOAD_PATH = os.getenv('CKEDITOR_UPLOAD_PATH')
 
 CKEDITOR_5_CONFIGS = {
     "default": {
@@ -90,4 +91,25 @@ CKEDITOR_5_CONFIGS = {
         ],
         "language": "ru",
     }
+}
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Lezgian Admin",
+    "site_header": "Lezgian Website Admin",
+    "site_brand": "Lezgian",
+    "welcome_sign": "Добро пожаловать!",
+    "copyright": "Lezgian Development",
+    "search_model": ["auth.User", "yourapp.YourModel"],  # если хочешь поиск
+
+    # Темы
+    "theme": "cyborg",  # 👈 тёмная тема (или "flatly", "darkly", "lux" и др.)
+
+    # Sidebar
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "icons": {
+        "auth.User": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        # Добавь иконки для своих моделей
+    },
 }
