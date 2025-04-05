@@ -58,7 +58,7 @@ Pipfile.lock
 # ===================
 # Node.js / Next.js
 # ===================
-
+backend/config/static/
 # Node modules
 **/node_modules/
 
