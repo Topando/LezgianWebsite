@@ -1,0 +1,31 @@
+name: 🚀 Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main  # изменишь, если у тебя другая ветка
+
+jobs:
+  deploy:
+    name: 🔄 Автодеплой на сервер
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Клонируем репозиторий
+        uses: actions/checkout@v3
+
+      - name: 🔐 Подключаемся по SSH и деплоим
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            if [ ! -d "/home/ubuntu/LezgianWebsite" ]; then
+              cd /home/ubuntu
+              git clone git@github.com:Topando/LezgianWebsite.git
+            fi
+            cd /home/ubuntu/your_repo_name
+            git pull origin main
+            docker-compose -f docker-compose.prod.yml pull
+            docker-compose -f docker-compose.prod.yml up -d --build
