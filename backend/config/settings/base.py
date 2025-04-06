@@ -1,6 +1,8 @@
 from pathlib import Path
 import os
 
+from django.template.context_processors import media
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 INSTALLED_APPS = [
@@ -11,9 +13,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_cleanup.apps.CleanupConfig",
     'rest_framework',
     "corsheaders",
     'django_ckeditor_5',
+    'content_list.partners',
 ]
 
 MIDDLEWARE = [
@@ -72,8 +76,9 @@ USE_I18N = True
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
+MEDIA_ROOT = '/app/media'
 
-MEDIA_URL = os.getenv('MEDIA_URL')
 STATIC_URL = '/static/'
 
 STATIC_ROOT = '/app/static'

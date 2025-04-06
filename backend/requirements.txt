@@ -9,3 +9,4 @@ djangorestframework>=3.16.0
 Pillow>=11.1.0
 django-ckeditor-5
 django-jazzmin>=2.6.0
+django-cleanup>=9.0.0
