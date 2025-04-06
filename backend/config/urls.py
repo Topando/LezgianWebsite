@@ -5,6 +5,8 @@ from django.urls import path, include
 
 
 urlpatterns = [
+    path('api/v1/', include('config.api_urls.api_urls_v1')),
+
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path("admin/", admin.site.urls),
 ]
