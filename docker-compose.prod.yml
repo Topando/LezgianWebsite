@@ -8,8 +8,9 @@ services:
     env_file:
       - .env
     volumes:
+      - ./backend/static:/app/static
       - /var/www/lezgian_media:/app/media
-      - ./backend/media:/app/media
+
     expose:
       - "8000"
     environment:
