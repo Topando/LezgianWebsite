@@ -27,30 +27,50 @@
 2) image - ссылка на фотографию
 3) order - сортировка (с бека идет уже в отсортированном виде)
 ***
-### GET /our-projects/gallery/
+### GET /our-projects/
 Возвращает массив данных о наших проектах. Это для блока Проекты на главной странце
 #### Структура ответа
-```json
+```
+HTTP 200 OK
+Allow: GET, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
 [
     {
-        "id": 2,
-        "name": "test3",
-        "description": "dev",
-        "image": "http://localhost:8000/media/our_projects/kesson-na-ulitse.png",
-        "order": 100
-    },
-    {
-        "id": 6,
-        "name": "sddds",
-        "description": "dsfadf",
-        "image": "http://localhost:8000/media/our_projects/i_3.webp",
-        "order": 1
+        "id": 7,
+        "name": "выфа",
+        "slug": "vyfa",
+        "announcement": "testt",
+        "image": "http://localhost:8000/media/our_projects/1.jpg"
     }
 ]
 ```
 #### Пояснения к полям
 1) name - Название - идет в тег alt
+2) slug : "test"
+3) description - Описание проекта
+4) image - ссылка на фотографию
+5) order - сортировка (с бека идет уже в отсортированном виде)
+***
+### GET /our-projects/{slug}/
+Возвращает массив данных проекте. Это для детальной страницы
+#### Структура ответа
+```
+HTTP 200 OK
+Allow: GET, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "id": 7,
+    "name": "выфа",
+    "description": "testt",
+    "image": "/media/our_projects/1.jpg"
+}
+```
+#### Пояснения к полям
+1) name - Название - идет в тег alt
 2) description - Описание проекта
 3) image - ссылка на фотографию
-4) order - сортировка (с бека идет уже в отсортированном виде)
 

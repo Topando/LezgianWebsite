@@ -7,11 +7,13 @@ from our_projects.models import OurProject
 @admin.register(OurProject)
 class OurProjectAdmin(admin.ModelAdmin):
     list_display = ("name", "announcement", "order")
+    prepopulated_fields = {'slug': ('name',)}
     list_filter = ("name", "order")
     ordering = ("order", )
     list_editable = ("order",)
     fields = (
         "name",
+        "slug",
         "announcement",
         "description",
         "image",
