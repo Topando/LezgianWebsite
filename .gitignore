@@ -30,7 +30,7 @@ media/
 staticfiles/
 static_root/
 *.sqlite3
-
+backend/static/
 # VSCode
 .vscode/
 
