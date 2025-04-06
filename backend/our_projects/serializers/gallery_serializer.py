@@ -6,4 +6,9 @@ from our_projects.models import OurProject
 class OurProjectsGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = OurProject
-        fields = '__all__'
+        fields = ("id", "name", "slug", "announcement", "image")
+
+class OurProjectDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurProject
+        fields = ("id", "name", "description", "image")
