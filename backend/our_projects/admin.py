@@ -6,12 +6,13 @@ from our_projects.models import OurProject
 
 @admin.register(OurProject)
 class OurProjectAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "order")
+    list_display = ("name", "announcement", "order")
     list_filter = ("name", "order")
     ordering = ("order", )
     list_editable = ("order",)
     fields = (
         "name",
+        "announcement",
         "description",
         "image",
         "image_preview",
