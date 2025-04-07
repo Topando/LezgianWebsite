@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'django_ckeditor_5',
     'content_list.partners',
+    'our_projects',
 ]
 
 MIDDLEWARE = [
