@@ -19,3 +19,6 @@ class OurProject(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save()
+
+    def __str__(self):
+        return self.name
