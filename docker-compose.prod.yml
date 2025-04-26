@@ -10,13 +10,11 @@ services:
     volumes:
       - ./backend/static:/app/static
       - /var/www/lezgian_media:/app/media
-
     expose:
       - "8000"
     environment:
       - DEBUG=0
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
-
     depends_on:
       - db
 
@@ -38,10 +36,20 @@ services:
       - ./backend/static:/app/static
     ports:
       - "80:80"
-
     depends_on:
       - backend
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
 
 volumes:
   postgres_data:

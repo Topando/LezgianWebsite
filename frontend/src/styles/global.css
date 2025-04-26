@@ -1,0 +1,159 @@
+@import url("./colors.css");
+@import url("./fonts.css");
+
+/* Reset and base styles  */
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+    font-family: 'interFont', sans-serif;
+    font-weight: 400;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a  {
+    text-decoration: none;
+    color:var(--black);
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+/* Common */
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style-position: inside;
+}
+
+img {
+	vertical-align: top;
+}
+
+img, svg {
+	max-width: 100%;
+	height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input, textarea, button, select {
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button, input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+
+html {
+    font-size: 24px;
+}
+
+
+@media (max-width: 4000px) {
+    html {
+        font-size: 33px;
+    }
+}
+
+@media (max-width: 2200px) {
+    html {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 2000px) {
+    html {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 1850px) {
+    html {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 1700px) {
+    html {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1600px) {
+    html {
+        font-size: 24px;
+    }
+}
+@media (max-width: 1400px) {
+    html {
+        font-size: 22px;
+    }
+}
+@media (max-width: 1300px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 950px) {
+    html {
+        font-size: 24px;
+    }
+}

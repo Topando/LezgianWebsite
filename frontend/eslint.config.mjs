@@ -22,6 +22,7 @@ const eslintConfig = [
             ["@features", "./src/features"], 
             ["@pages", "./src/pages"], 
             ["@app", "./src/app"],
+            ["@styles", "./src/styles"],
           ],
           extensions: [".js", ".jsx", ".ts", ".tsx"]
         }
