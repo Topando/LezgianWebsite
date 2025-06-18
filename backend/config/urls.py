@@ -9,6 +9,7 @@ urlpatterns = [
 
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path("admin/", admin.site.urls),
+    path("", include("django_prometheus.urls")),
 ]
 
 
