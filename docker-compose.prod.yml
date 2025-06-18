@@ -30,6 +30,7 @@ services:
 
   nginx:
     image: nginx:alpine
+
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /var/www/lezgian_media:/app/media
@@ -38,6 +39,7 @@ services:
       - "80:80"
     depends_on:
       - backend
+      - grafana
 
   frontend:
     build:
