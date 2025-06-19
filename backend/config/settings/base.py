@@ -7,6 +7,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 INSTALLED_APPS = [
     'jazzmin',
+    "drf_yasg",
+    'parler',
+    "solo",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -19,7 +22,10 @@ INSTALLED_APPS = [
     "corsheaders",
     'django_ckeditor_5',
     'content_list.partners',
+    'content_list.congresses',
     'our_projects',
+    'documents',
+    "contacts"
 ]
 
 
@@ -28,6 +34,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django_prometheus.middleware.PrometheusBeforeMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    'django.middleware.locale.LocaleMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -37,6 +44,17 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_prometheus.middleware.PrometheusAfterMiddleware",
 ]
+
+PARLER_LANGUAGES = {
+    None: [
+        {'code': 'en', 'name': 'English'},
+        {'code': 'ru', 'name': 'Русский'},
+    ],
+    'default': {
+        'fallbacks': ['en'],
+        'hide_untranslated': False,
+    }
+}
 
 
 

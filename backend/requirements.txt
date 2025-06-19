@@ -11,3 +11,6 @@ django-ckeditor-5
 django-jazzmin>=2.6.0
 django-cleanup>=9.0.0
 django-prometheus>=2.3.0
+drf-yasg>=1.21.10
+django-parler>=2.3
+django-solo>=2.4.0

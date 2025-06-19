@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from parler.models import TranslatedFields, TranslatableModel
 
 
 class OurProject(models.Model):
@@ -9,6 +10,7 @@ class OurProject(models.Model):
     description = models.TextField(verbose_name="Описание")
     image = models.ImageField(upload_to="our_projects/", verbose_name="Фотография")
     order = models.PositiveIntegerField(default=1, verbose_name="Сортировка")
+
 
     class Meta:
         db_table = "Our_Projects"
@@ -22,3 +24,6 @@ class OurProject(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
