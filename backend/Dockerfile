@@ -8,6 +8,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -16,9 +17,15 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . .
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoints/ entrypoints/
+
+RUN chmod +x entrypoints/entrypoint_main.sh
+
+RUN ls -l entrypoints/entrypoint_main.sh \
+ && file entrypoints/entrypoint_main.sh \
+ && head -n1 entrypoints/entrypoint_main.sh | od -c
+
+ENTRYPOINT ["/app/entrypoints/entrypoint_main.sh"]
 
 EXPOSE 8000
 
