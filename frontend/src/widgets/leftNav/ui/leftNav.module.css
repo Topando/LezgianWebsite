@@ -1,0 +1,86 @@
+.header {
+    background-color: var(--dark-blue);
+    padding: 1.66rem 0.66rem 2.66rem 0.66rem;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    width: 13.66rem;
+    position: sticky;
+    top: 0;
+    
+    overflow-y: visible;
+}
+
+.header > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.header * {
+    color: var(--white);
+}
+
+.comInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.833rem;
+}
+.logo {
+    width: 5rem;
+}
+.name {
+    font-weight: 700;
+    font-size: var(--s16);
+    text-align: center;
+}
+
+
+
+.nav {
+    display:flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.33rem;
+
+    flex-grow: 1;
+}
+.navLinkContainer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    padding: 0.5rem 1.33rem;
+    width: 100%;
+
+    border-radius: 0.33rem;
+
+    transition: background-color 120ms ease-out;
+}
+.navLinkContainer:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.navLinkContainer .navImage {
+    width: 0.833rem;
+    height: 0.833rem;
+}
+.navLinkContainer p {
+    font-size: var(--s18);
+    font-weight: 500;
+}
+
+.socNetwork {
+    margin-top: auto;
+    padding: 2rem 0.66rem 0 0.66rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    flex-shrink: 0;
+}
+.imageNetwork {
+    width: 2rem;
+}

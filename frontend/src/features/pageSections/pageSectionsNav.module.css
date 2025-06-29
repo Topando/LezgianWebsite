@@ -1,0 +1,29 @@
+.container {
+    padding: 0.66rem;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.66rem;
+}
+
+.link {
+    padding: 0.5rem 0.66rem;
+    border-radius: 0.333rem;
+    color: var(--text-gray);
+
+    font-size: var(--s16);
+    font-weight: 500;
+    text-align: center;
+
+    transition: all 120ms ease-out;
+}
+
+.link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.link.active {
+    background-color: var(--border-gray);
+}

@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+.container button {
+    font-size: var(--s16);
+    font-weight: 500;
+    color: var(--text-gray);
+    opacity: 0.4;
+    padding: 0.41rem 0.4rem;
+    
+    transition: 
+        opacity 120ms ease-out,
+        background-color 120ms ease-out,
+        border-radius 120ms ease-out;
+}
+
+.container button.active {
+    opacity: 1;
+    background-color: var(--border-gray);
+    border-radius: 0.7rem;
+}
+
+.container button:not(.active):hover {
+    opacity: 0.7;
+    transition: opacity 120ms ease-out;
+}

@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .scroll {
+    display: flex;
+    gap: 4rem;            /* расстояние между лого */
+    pointer-events: none; /* запрет ручного скролла */
+    overflow: hidden;     /* прячем всё лишнее */
+  }
+  
+  .item {
+    flex: 0 0 auto;       /* фиксированная ширина под контент */
+    padding: 0 0.5rem;
+  }
+  .item > :global(img) {
+    height: 3.33rem;
+    width: auto;
+  }
+  

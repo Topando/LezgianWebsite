@@ -1,0 +1,30 @@
+.container {
+    display:flex;
+    flex-wrap: nowrap;
+
+    padding-right: 2.66rem;
+
+    background-color: var(--background-gray);
+}
+.mainContent {
+    flex-grow: 1;
+    min-width: 0;
+
+}
+.leftNavContainer {
+    width: 13.66rem;
+    flex-shrink: 0;
+}
+.rightNavContainer {
+    width: 11rem;
+    flex-shrink: 0;
+}
+
+.rightNavContainer,
+.mainContent {
+    padding: 1.33rem 0.833rem 0 0.833rem;
+}
+
+.mainContent > div:first-child {
+    margin-bottom: 0.833rem;
+}
