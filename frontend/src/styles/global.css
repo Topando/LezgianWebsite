@@ -1,5 +1,6 @@
 @import url("./colors.css");
 @import url("./fonts.css");
+@import url("./vars.css");
 
 /* Reset and base styles  */
 * {
@@ -97,6 +98,7 @@ legend {
 
 html {
     font-size: 24px;
+    scroll-behavior: smooth;
 }
 
 

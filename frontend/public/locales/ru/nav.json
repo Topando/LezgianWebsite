@@ -1,10 +1,12 @@
 {
     "links": {
-        "about-us": "О НАС",
-        "congresses": "СЪЕЗДЫ",
-        "contacts": "КОНТАКТЫ",
-        "reports": "ЕЖЕГОДНЫЕ ОТЧЕТЫ",
-        "projects": "ПРОЕКТЫ",
-        "docs": "ДОКУМЕНТЫ"
+
+        "main": "Главная",
+        "about-us": "О нас",
+        "congresses": "Съезды",
+        "contacts": "Контакты",
+        "reports": "Отчеты",
+        "projects": "Проекты",
+        "docs": "Документы"
     }
 }

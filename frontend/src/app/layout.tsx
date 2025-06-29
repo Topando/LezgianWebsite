@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Header } from "@/widgets/header";
-import { NextIntlClientProvider } from 'next-intl';
 import { cookies as getCookies} from 'next/headers';
+
+import { Providers } from "./providers";
+import ClientApp from "./ClientApp";
 
 import "@styles/colors.css";
 import "@styles/fonts.css";
@@ -22,12 +23,13 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <NextIntlClientProvider>
-        <body>
-          <Header />
-          {children}
-        </body>
-      </NextIntlClientProvider>
+      <body>
+        <Providers>
+          <ClientApp>
+            {children}
+          </ClientApp>
+        </Providers>
+      </body>
     </html>
   );
 }

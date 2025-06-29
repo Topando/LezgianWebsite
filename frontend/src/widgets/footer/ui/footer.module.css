@@ -1,0 +1,14 @@
+.container {
+    padding-bottom: 3rem;
+    position: relative;
+    width: 100%;
+}
+.backgroundImage {
+    position: absolute;
+    width: 100%;
+
+    top: 0;
+}
+.paddingBottom {
+    padding-bottom: 16rem;
+}

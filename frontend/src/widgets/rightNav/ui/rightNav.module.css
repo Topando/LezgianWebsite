@@ -1,0 +1,13 @@
+.rightNav {
+    width: 11rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.833rem;
+}
+
+.topBlock,
+.bottomBlock {
+    background-color: var(--white);
+    border-radius: 0.66rem;
+}
