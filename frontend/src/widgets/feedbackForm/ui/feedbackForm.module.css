@@ -1,0 +1,52 @@
+.title {
+    font-size: var(--s20);
+    font-weight: 500;
+
+    margin-bottom: 2.29rem;
+}
+.mainInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.33rem;
+
+    margin-bottom: 0.833rem;
+}
+.formElem input{
+    padding: 0.5rem 0.66rem;
+    width: 100%;
+
+    font-size: var(--s16);
+    font-weight: 500;
+    color: var(--text-gray);
+
+    border-bottom: 1px solid rgb(130, 130, 130);
+}
+.formElem input::placeholder {
+    opacity: 1;
+    font-size: var(--s16);
+    font-weight: 500;
+    color: var(--text-gray);
+}
+.checkBoxContainer {
+    display: flex;
+    gap: 0.4rem;
+
+    margin-bottom: 0.833rem;
+}
+.labelCheckBox {
+    font-size: var(--s12);
+    font-weight: 300;
+    color: var(--text-gray);
+}
+.buttonSendContainer {
+    display: flex;
+    justify-content: right;
+}
+.buttonSend {
+    background-color: var(--dark-blue);
+    padding: 0.5rem 2.375rem;
+    border-radius: 0.33rem;
+
+    font-size: var(--s16);
+    color: var(--white);
+}

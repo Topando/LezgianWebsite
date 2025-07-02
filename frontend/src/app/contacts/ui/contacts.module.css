@@ -1,0 +1,28 @@
+.heading {
+    font-size: var(--s28);
+    font-weight: 700;
+
+    margin-bottom: 2.5rem;
+}
+.nameCompany {
+    font-size: var(--s20);
+    font-weight: 500;
+
+    margin-bottom: 1.66rem;
+}
+.contactsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.66rem;
+
+    margin-bottom: 2.5rem;
+}
+.title {
+    font-size: var(--s20);
+    font-weight: 500;
+
+    margin-bottom: .833rem; 
+}
+.desc {
+    font-size: var(--s16);
+}

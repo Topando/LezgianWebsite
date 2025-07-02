@@ -9,8 +9,16 @@
 .mainContent {
     flex-grow: 1;
     min-width: 0;
-
 }
+
+.pageContent {
+    border-radius: 0.66rem;
+    background-color: var(--white);
+
+    padding: 1.66rem;
+    padding-bottom: 2.66rem;
+}
+
 .leftNavContainer {
     width: 13.66rem;
     flex-shrink: 0;

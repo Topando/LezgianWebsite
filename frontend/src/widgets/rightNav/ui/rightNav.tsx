@@ -20,7 +20,7 @@ export function RightNav() {
 }
 
 function DefaultTopContent() {
-  return <div>Выберите раздел</div>;
+  return <div></div>;
 }
 
 function TelegramNews() {

@@ -20,7 +20,9 @@ export default function ClientApp({ children }: { children: React.ReactNode }) {
 
           <div className={styles.mainContent}>
             <Header/>
-            {children}
+            <div className={styles.pageContent}>
+              {children}
+            </div>
             <Footer/>
           </div>
 

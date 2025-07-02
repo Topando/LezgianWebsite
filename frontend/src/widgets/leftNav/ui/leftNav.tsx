@@ -39,7 +39,7 @@ export function LeftNav () {
                         <p>{navT('main')}</p>
                     </Link>
 
-                    <Link href={'/'} className={styles.navLinkContainer}>
+                    <Link href={'/about'} className={styles.navLinkContainer}>
                         <Image 
                             className={styles.navImage}
                             src={'/images/navIcons/about.svg'}
@@ -50,7 +50,7 @@ export function LeftNav () {
                         <p>{navT('about-us')}</p>
                     </Link>
 
-                    <Link href={'/'} className={styles.navLinkContainer}>
+                    <Link href={'/docs'} className={styles.navLinkContainer}>
                         <Image 
                             className={styles.navImage}
                             src={'/images/navIcons/docs.svg'}
@@ -61,7 +61,7 @@ export function LeftNav () {
                         <p>{navT('docs')}</p>
                     </Link>
 
-                    <Link href={'/'} className={styles.navLinkContainer}>
+                    <Link href={'/projects'} className={styles.navLinkContainer}>
                         <Image 
                             className={styles.navImage}
                             src={'/images/navIcons/projects.svg'}
@@ -72,7 +72,7 @@ export function LeftNav () {
                         <p>{navT('projects')}</p>
                     </Link>
 
-                    <Link href={'/'} className={styles.navLinkContainer}>
+                    <Link href={'/congresses'} className={styles.navLinkContainer}>
                         <Image 
                             className={styles.navImage}
                             src={'/images/navIcons/congress.svg'}
@@ -83,7 +83,7 @@ export function LeftNav () {
                         <p>{navT('congresses')}</p>
                     </Link>
 
-                    <Link href={'/'} className={styles.navLinkContainer}>
+                    <Link href={'/contacts'} className={styles.navLinkContainer}>
                         <Image 
                             className={styles.navImage}
                             src={'/images/navIcons/contacts.svg'}
@@ -94,7 +94,7 @@ export function LeftNav () {
                         <p>{navT('contacts')}</p>
                     </Link>
 
-                    <Link href={'/'} className={styles.navLinkContainer}>
+                    <Link href={'/reports'} className={styles.navLinkContainer}>
                         <Image 
                             className={styles.navImage}
                             src={'/images/navIcons/reports.svg'}

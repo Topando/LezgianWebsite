@@ -4,7 +4,9 @@ import styles from './homepage.module.css';
 
 import { useRightNav } from '@/shared/context/RightNavContext';
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
+import { Contacts, contacts } from '@/shared/api/endpoints/contacts';
 
 
 const sections = [
@@ -15,7 +17,23 @@ const sections = [
   ];
 
 export function HomepageContent () {
+    const [data, setData] = useState<Contacts>();
     const { setContent } = useRightNav();
+
+    useEffect(() => {
+        const getRewards = async () => {
+            try {
+                const response = await contacts();
+                setData(response);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        };
+
+        getRewards();
+    }, []);
+
 
     useEffect(() => {
       setContent(<PageSectionsNav sections={sections} />);
