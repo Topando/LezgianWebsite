@@ -1,1 +1,0 @@
-export {ContactsPage as default} from './ui/contacts';
