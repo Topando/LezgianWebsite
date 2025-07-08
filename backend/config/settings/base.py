@@ -3,7 +3,7 @@ import os
 
 BASE_URL   = os.getenv("BASE_URL", "http://localhost:8000")
 MEDIA_URL  = f"{BASE_URL}/media/"
-STATIC_URL = f"{BASE_URL}/static/"
+STATIC_URL = '/static/'
 MEDIA_ROOT = '/media/'
 
 
@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'documents',
     "contacts",
     "reports",
-    "about_us"
+    "about_us",
+    "feedback_form",
 ]
 
 
