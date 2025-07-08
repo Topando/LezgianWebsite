@@ -185,6 +185,8 @@ function PhoneInput({ value, onChange }: {
     <input
       ref={ref}
       type="tel"
+      inputMode="tel"
+      pattern="[0-9]*"
       value={inputValue}
       onChange={handleChange}
       placeholder="+7"
