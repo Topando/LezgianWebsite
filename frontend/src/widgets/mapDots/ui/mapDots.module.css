@@ -1,0 +1,52 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+  
+.mapImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.mapDot {
+    position: absolute;
+    width: 0.65rem;
+    height: 0.65rem;
+    background-color: white;
+    border: 0.16rem solid red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+}
+
+.modalDot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 0;
+    top: 0;
+    background: var(--white);
+    padding: .66rem 1.33rem;
+    border-radius: 0.66rem;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+    z-index: 999;
+    pointer-events: none;
+    translate: 60% 0;
+
+    width: 10rem;
+}
+
+.headerDot {
+    font-weight: 600;
+    font-size: var(--s20);
+    margin-bottom: .33rem;
+}
+
+.descDot {
+    font-size: var(--s16);
+    font-weight: 500;
+    margin-bottom: .5rem;
+}

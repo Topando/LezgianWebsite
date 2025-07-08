@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Docs, docs } from "@/shared/api/endpoints/docs";
 import { useRightNav } from '@/shared/context/RightNavContext';
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
+import { Separator } from "@/features/separator";
 
 export function DocsPage () {
     const [data, setData] = useState<Docs[]>([]);
@@ -42,6 +43,7 @@ export function DocsPage () {
     return (
         <div className={styles.container}>
             <p className={styles.heading}>Документы</p>
+            <Separator/>
 
             <div className={styles.articlesCompany} id="0">
                 <h1 className={styles.titleDocs}>Устав Федеральной Лезгинской НКА</h1>
@@ -50,7 +52,7 @@ export function DocsPage () {
 
             {data.map((item, ind) => (
                 <div key={ind}>
-                    <div className={styles.separator}></div>
+                    <Separator/>
                     <div className={styles.docsElemContainer} id={`${ind + 1}`}>
                         <p className={styles.titleDocs}>{item.title}</p>
                         <p className={styles.descText}>{item.description}</p>
@@ -65,14 +67,16 @@ export function DocsPage () {
                                     download
                                 >
                                     <div className={styles.fileElem}>
-                                        <Image
-                                            className={styles.fileIcon}
-                                            src={'/images/navIcons/fileIcon.svg'}
-                                            width={16}
-                                            height={16}
-                                            alt='Файл'
-                                        />
-                                        <p className={styles.fileTitle}>{elem.title}</p>
+                                        <div className={styles.nameFile}>
+                                            <Image
+                                                className={styles.fileIcon}
+                                                src={'/images/navIcons/fileIcon.svg'}
+                                                width={16}
+                                                height={16}
+                                                alt='Файл'
+                                            />
+                                            <p className={styles.fileTitle}>{elem.title}</p>
+                                        </div>
                                         <p className={styles.download}>Скачать</p>
                                     </div>
                                 </a>

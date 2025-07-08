@@ -1,161 +1,103 @@
-import {useTranslations} from 'next-intl';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+
+import { PageTitle, useFirstPathSegment } from '@/features/pageTitle/pageTitle';
 
 import styles from './leftNav.module.css';
 
+export function LeftNav() {
+  const cmT = useTranslations('common');
+  const navT = useTranslations('nav.links');
 
-export function LeftNav () {
-    const cmT = useTranslations('common');
-    const navT = useTranslations('nav.links');
+  const [isOpen, setIsOpen] = useState(false);
+  const firstPathSegment = useFirstPathSegment();
 
-    return (
-        <nav className={styles.header}>
-            <div>
-                <div className={styles.comInfo}>
-                    <Image 
-                        className={styles.logo}
-                        src={'/images/logo.png'}
-                        width={40}
-                        height={40}
-                        alt='Логотип'
-                    />
+  return (
+    <nav className={`${styles.header} ${isOpen ? styles.open : ''}`}>
+      <div className={styles.mobileNav}>
+        <p className={styles.pageName}><PageTitle/></p>
 
-                    <div>
-                        <p className={styles.name}>{cmT('full-name')}</p>
-                    </div>
-                </div>
+        <button onClick={() => setIsOpen(!isOpen)} className={styles.buttonHam}>
+              <Image
+                  className={`${styles.hamburgerBut} ${isOpen? styles.open:styles.close}`}
+                  src="/images/navIcons/close.svg"
+                  width={30}
+                  height={30}
+                  alt="Закрыть меню"
+              />
+              <Image
+                  className={`${styles.hamburgerBut} ${!isOpen? styles.open:styles.close}`}
+                  src={'/images/navIcons/hamburger.svg'}
+                  width={40}
+                  height={40}
+                  alt='Открыть меню'
+              />
+        </button>
 
+        
+      </div>
 
-                <div className={styles.nav}>
-                    <Link href={'/'} className={styles.navLinkContainer}>
-                        <Image
-                            className={styles.navImage} 
-                            src={'/images/navIcons/main.svg'}
-                            width={30}
-                            height={30}
-                            alt='Главная'
-                        />
-                        <p>{navT('main')}</p>
-                    </Link>
+      <div className={`${styles.container} ${isOpen ? styles.containerOpen : ''}`}>
 
-                    <Link href={'/about'} className={styles.navLinkContainer}>
-                        <Image 
-                            className={styles.navImage}
-                            src={'/images/navIcons/about.svg'}
-                            width={30}
-                            height={30}
-                            alt='О нас'
-                        />
-                        <p>{navT('about-us')}</p>
-                    </Link>
+        <div className={styles.comInfo}>
+          <Image
+            className={styles.logo}
+            src={'/images/logo.png'}
+            width={40}
+            height={40}
+            alt='Логотип'
+          />
+          <div>
+            <p className={styles.name}>{cmT('full-name')}</p>
+          </div>
+        </div>
 
-                    <Link href={'/docs'} className={styles.navLinkContainer}>
-                        <Image 
-                            className={styles.navImage}
-                            src={'/images/navIcons/docs.svg'}
-                            width={30}
-                            height={30}
-                            alt='Документы'
-                        />
-                        <p>{navT('docs')}</p>
-                    </Link>
+        <div className={styles.nav}>
+          {[
+            { href: '/', label: navT('main'), icon: 'main' },
+            { href: '/about', label: navT('about-us'), icon: 'about' },
+            { href: '/docs', label: navT('docs'), icon: 'docs' },
+            { href: '/projects', label: navT('projects'), icon: 'projects' },
+            { href: '/congresses', label: navT('congresses'), icon: 'congress' },
+            { href: '/contacts', label: navT('contacts'), icon: 'contacts' },
+            { href: '/reports', label: navT('reports'), icon: 'reports' },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.navLinkContainer} ${firstPathSegment==link.href ? styles.navLinkContainerActive:''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              <Image
+                className={styles.navImage}
+                src={`/images/navIcons/${link.icon}.svg`}
+                width={30}
+                height={30}
+                alt={link.label}
+              />
+              <p>{link.label}</p>
+            </Link>
+          ))}
+        </div>
 
-                    <Link href={'/projects'} className={styles.navLinkContainer}>
-                        <Image 
-                            className={styles.navImage}
-                            src={'/images/navIcons/projects.svg'}
-                            width={30}
-                            height={30}
-                            alt='Проекты'
-                        />
-                        <p>{navT('projects')}</p>
-                    </Link>
-
-                    <Link href={'/congresses'} className={styles.navLinkContainer}>
-                        <Image 
-                            className={styles.navImage}
-                            src={'/images/navIcons/congress.svg'}
-                            width={30}
-                            height={30}
-                            alt='Съезды'
-                        />
-                        <p>{navT('congresses')}</p>
-                    </Link>
-
-                    <Link href={'/contacts'} className={styles.navLinkContainer}>
-                        <Image 
-                            className={styles.navImage}
-                            src={'/images/navIcons/contacts.svg'}
-                            width={30}
-                            height={30}
-                            alt='Контакты'
-                        />
-                        <p>{navT('contacts')}</p>
-                    </Link>
-
-                    <Link href={'/reports'} className={styles.navLinkContainer}>
-                        <Image 
-                            className={styles.navImage}
-                            src={'/images/navIcons/reports.svg'}
-                            width={30}
-                            height={30}
-                            alt='Отчеты'
-                        />
-                        <p>{navT('reports')}</p>
-                    </Link>
-                </div>
-
-                <div className={styles.socNetwork}>
-                    <Link href={'/'}>
-                        <Image
-                            className={styles.imageNetwork}
-                            src={'/images/linksNetwork/vk.svg'}
-                            width={40}
-                            height={40}
-                            alt='Группа vk'
-                        ></Image>
-                    </Link>
-                    <Link href={'/'}>
-                        <Image
-                            className={styles.imageNetwork}
-                            src={'/images/linksNetwork/telegram.svg'}
-                            width={40}
-                            height={40}
-                            alt='Группа vk'
-                        ></Image>
-                    </Link>
-                    <Link href={'/'}>
-                        <Image
-                            className={styles.imageNetwork}
-                            src={'/images/linksNetwork/rutube.svg'}
-                            width={40}
-                            height={40}
-                            alt='Группа vk'
-                        ></Image>
-                    </Link>
-                </div>
-                {/* 
-                <div className={styles.containerFunc}>
-                    <div>
-                        <div className={styles.searchField}>
-                            <input type="text"></input>
-                            <button>
-                                <Image
-                                    src={'/images/search-icon.svg'}
-                                    width={30}
-                                    height={30}
-                                    alt='Поиск'
-                                />
-                            </button>
-                        </div>
-                        <LocaleSwitcher/>
-                    </div>
-                </div>
-                */}
-            </div>
-
-            
-        </nav>
-    )
+        <div className={styles.socNetwork}>
+          {['vk', 'telegram', 'rutube'].map((network) => (
+            <Link key={network} href={'/'}>
+              <Image
+                className={styles.imageNetwork}
+                src={`/images/linksNetwork/${network}.svg`}
+                width={40}
+                height={40}
+                alt={network}
+              />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
 }

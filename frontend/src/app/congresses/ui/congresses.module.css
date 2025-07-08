@@ -48,3 +48,6 @@
     color:var(--light-blue);
     text-decoration: underline;
 }
+.content strong {
+    font-weight: 700;
+}

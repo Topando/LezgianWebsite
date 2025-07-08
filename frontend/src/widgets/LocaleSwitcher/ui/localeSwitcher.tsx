@@ -7,7 +7,13 @@ import Cookies from 'js-cookie';
 
 import styles from './localeSwitcher.module.css';
 
-export function LocaleSwitcher() {
+type Theme = 'black' | 'white';
+
+interface Props {
+  theme?: Theme;
+}
+
+export function LocaleSwitcher({ theme = 'white' }: Props) {
   const dispatch = useDispatch();
   const currentLocale = useSelector((state: RootState) => state.locale.locale);
 
@@ -18,8 +24,18 @@ export function LocaleSwitcher() {
 
   return (
     <div className={styles.container}>
-      <button onClick={() => changeLanguage('ru')} className={currentLocale==='ru' ? styles.active: ''}>RUS</button>
-      <button onClick={() => changeLanguage('lz')} className={currentLocale==='lz' ? styles.active: ''}>LEZ</button>
+      <button
+        onClick={() => changeLanguage('ru')}
+        className={`${styles[theme]} ${currentLocale === 'ru' ? styles.active : ''}`}
+      >
+        RUS
+      </button>
+      <button
+        onClick={() => changeLanguage('lz')}
+        className={`${styles[theme]} ${currentLocale === 'lz' ? styles.active : ''}`}
+      >
+        LEZ
+      </button>
     </div>
   );
 }

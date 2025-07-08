@@ -8,7 +8,8 @@
 	margin: 0px;
 	border: none;
     font-family: 'interFont', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
+    color: var(--light-black);
 }
 
 *,
@@ -99,6 +100,7 @@ legend {
 html {
     font-size: 24px;
     scroll-behavior: smooth;
+    background-color: var(--background-gray);
 }
 
 

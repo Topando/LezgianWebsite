@@ -26,3 +26,25 @@
     opacity: 0.7;
     transition: opacity 120ms ease-out;
 }
+
+.container .black {
+    color: var(--white);
+    opacity: 1;
+}
+.container .black.active {
+    color: black;
+}
+
+@media (max-width: 1000px){
+    .container {
+        gap: .33rem;
+    }
+    .container button {
+        font-size: var(--s12);
+        padding: .5rem .66rem;
+    }
+    .container button.active {
+        background-color: #F8F8F8;
+        border-radius: .33rem;
+    }
+}

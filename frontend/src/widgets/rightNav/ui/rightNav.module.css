@@ -14,3 +14,14 @@
     background-color: var(--white);
     border-radius: 0.66rem;
 }
+
+@media (max-width: 1000px){
+    .rightNav {
+        width: 100%;
+        /*компенсация padding в layout*/
+        max-width: calc(100vw - 0.625rem*2); 
+        overflow-x: hidden; 
+
+        gap: 0;
+    }
+}

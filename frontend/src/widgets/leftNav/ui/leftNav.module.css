@@ -13,11 +13,7 @@
     overflow-y: visible;
 }
 
-.header > div {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-}
+
 
 .header * {
     color: var(--white);
@@ -60,6 +56,20 @@
 
     transition: background-color 120ms ease-out;
 }
+
+.navLinkContainerActive {
+    background-color: var(--white);
+}
+.navLinkContainerActive p{
+    color: var(--black);
+}
+.navLinkContainerActive .navImage {
+    filter: brightness(0.18);
+}
+.nav .navLinkContainerActive:hover {
+    background-color: var(--white);
+}
+
 .navLinkContainer:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
@@ -83,4 +93,96 @@
 }
 .imageNetwork {
     width: 2rem;
+}
+.containerOpen {
+    display: none;
+}
+.hamburgerBut {
+    display: none;
+}
+.mobileNav {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    .open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        overflow-y: auto;
+        max-height: 500vh;
+        height: 100vh;
+    }
+    .header {
+        min-height: auto;
+        width: 100%;
+        padding: 0.55rem .833rem;
+    }
+    .mobileNav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .buttonHam {
+        position: relative;
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+    .hamburgerBut {
+        display: block;
+        cursor: pointer;
+        width: 1.1rem;
+        height: 1.1rem;
+        transition: opacity .6s ease;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .hamburgerBut.close {
+        opacity: 0;
+    }
+    .hamburgerBut.open {
+        opacity: 1;
+    }
+    .pageName {
+        font-size: var(--s18);
+        font-weight: 700;
+    }
+
+    .container {
+        position: absolute;
+        top: 2rem;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+      
+        display: flex;
+        flex-direction: column;
+        padding: 1rem .66rem;
+    }
+
+    .containerOpen {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .nav {
+        gap: .5rem;
+    }
+
+    .name {
+        font-size: var(--s16);
+        padding: 0 .5rem;
+    }
+    .navLinkContainer p {
+        font-size: var(--s16);
+    }
+    .socNetwork {
+        display: none;
+    }
 }

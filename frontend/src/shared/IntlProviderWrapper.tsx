@@ -32,7 +32,7 @@ export default function IntlProviderWrapper({ children }: { children: React.Reac
   }, [locale]);
 
   if (!messages) {
-    return <div>Загрузка перевода...</div>;
+    return <div></div>;
   }
 
   return (

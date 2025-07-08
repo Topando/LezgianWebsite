@@ -27,3 +27,49 @@
 .link.active {
     background-color: var(--border-gray);
 }
+
+@media (max-width: 1000px) {
+    .container {
+      padding: 0.33rem;
+  
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+
+      scrollbar-width: none;
+    }
+  
+    .container::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .nav {
+        display: flex;
+        flex-direction: row;
+        gap: .16rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      
+        white-space: nowrap;
+        scrollbar-width: none;
+        border-radius: 0.33rem;
+      }
+      
+    .nav::-webkit-scrollbar {
+        display: none;
+    }
+  
+    .link {
+      padding: 0.66rem;
+      border-radius: 0.33rem;
+      color: var(--text-gray);
+      font-size: var(--s12);
+
+      white-space: nowrap;
+    }
+  
+    .link.active {
+      background-color: #F8F8F8;
+    }
+  }
+  
