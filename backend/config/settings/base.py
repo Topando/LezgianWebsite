@@ -1,6 +1,14 @@
 from pathlib import Path
 import os
 
+BASE_URL   = os.getenv("BASE_URL", "http://localhost:8000")
+MEDIA_URL  = f"{BASE_URL}/media/"
+STATIC_URL = f"{BASE_URL}/static/"
+MEDIA_ROOT = '/media/'
+
+
+STATIC_ROOT = '/static/'
+
 from django.template.context_processors import media
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +33,9 @@ INSTALLED_APPS = [
     'content_list.congresses',
     'our_projects',
     'documents',
-    "contacts"
+    "contacts",
+    "reports",
+    "about_us"
 ]
 
 
@@ -104,12 +114,8 @@ USE_I18N = True
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
-MEDIA_ROOT = '/app/media'
 
-STATIC_URL = '/static/'
 
-STATIC_ROOT = '/app/static'
 
 CKEDITOR_UPLOAD_PATH = os.getenv('CKEDITOR_UPLOAD_PATH')
 

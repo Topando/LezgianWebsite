@@ -5,5 +5,7 @@ urlpatterns = [
     path('our-projects/', include('our_projects.urls')),
     path('documents/', include('documents.urls')),
     path('congresses/', include('content_list.congresses.urls')),
-    path('contacts/', include('contacts.urls'))
+    path('contacts/', include('contacts.urls')),
+    path('reports/', include('reports.urls')),
+    path('about/', include('about_us.urls'))
 ]
