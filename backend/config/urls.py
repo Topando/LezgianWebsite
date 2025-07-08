@@ -1,3 +1,5 @@
+from urllib.parse import urlparse
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -29,6 +31,6 @@ urlpatterns = [
 
 ]
 
-
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    media_prefix = urlparse(settings.MEDIA_URL).path or "/media/"
+    urlpatterns += static(media_prefix, document_root=settings.MEDIA_ROOT)
