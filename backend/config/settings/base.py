@@ -139,7 +139,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Lezgian",
     "welcome_sign": "Добро пожаловать!",
     "copyright": "Lezgian Development",
-    "search_model": ["auth.User", "yourapp.YourModel"],  # если хочешь поиск
+    "search_model": ["auth.User", "yourapp.YourModel"], 
 
     # Темы
     "theme": "cyborg",  # 👈 тёмная тема (или "flatly", "darkly", "lux" и др.)
