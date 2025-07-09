@@ -3,7 +3,7 @@ import os
 
 BASE_URL   = os.getenv("BASE_URL", "http://localhost:8000")
 MEDIA_URL  = f"{BASE_URL}/media/"
-STATIC_URL = f"{BASE_URL}/static/"
+STATIC_URL = '/static/'
 MEDIA_ROOT = '/media/'
 
 
@@ -138,7 +138,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Lezgian",
     "welcome_sign": "Добро пожаловать!",
     "copyright": "Lezgian Development",
-    "search_model": ["auth.User", "yourapp.YourModel"],  # если хочешь поиск
+    "search_model": ["auth.User", "yourapp.YourModel"], 
 
     # Темы
     "theme": "cyborg",  # 👈 тёмная тема (или "flatly", "darkly", "lux" и др.)
