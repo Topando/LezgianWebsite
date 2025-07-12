@@ -1,0 +1,1 @@
+export {TelegramNews} from './ui/telegramNews';

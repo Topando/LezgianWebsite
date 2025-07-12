@@ -1,0 +1,23 @@
+.headerPage {
+    font-size: var(--s28);
+    font-weight: 700;
+}
+.elemHeader {
+    font-weight: var(--s20);
+    font-weight: 500;
+
+    margin-bottom: 0.9rem;
+}
+
+@media (max-width: 1000px){
+    .headerPage {
+        font-size: var(--s20);
+        font-weight: 500;
+    }
+    .elemHeader {
+        font-size: var(--s16);
+        font-weight: 600;
+    
+        margin-bottom: .666rem;
+    }
+}

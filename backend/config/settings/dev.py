@@ -1,9 +1,13 @@
 from .base import *
 
+
+
+
 DEBUG = True
 SECRET_KEY = 'dev-secret-key'
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

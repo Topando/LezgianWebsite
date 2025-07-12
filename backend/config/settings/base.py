@@ -1,12 +1,23 @@
 from pathlib import Path
 import os
 
+BASE_URL   = os.getenv("BASE_URL", "http://localhost:8000")
+MEDIA_URL  = f"{BASE_URL}/media/"
+STATIC_URL = '/static/'
+MEDIA_ROOT = '/media/'
+
+
+STATIC_ROOT = '/static/'
+
 from django.template.context_processors import media
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 INSTALLED_APPS = [
     'jazzmin',
+    "drf_yasg",
+    'parler',
+    "solo",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -15,14 +26,26 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_cleanup.apps.CleanupConfig",
     'rest_framework',
+    "django_prometheus",
     "corsheaders",
     'django_ckeditor_5',
     'content_list.partners',
+    'content_list.congresses',
     'our_projects',
+    'documents',
+    "contacts",
+    "reports",
+    "about_us",
+    "feedback_form",
 ]
 
+
+
+
 MIDDLEWARE = [
+    "django_prometheus.middleware.PrometheusBeforeMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    'django.middleware.locale.LocaleMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -30,7 +53,22 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_prometheus.middleware.PrometheusAfterMiddleware",
 ]
+
+PARLER_LANGUAGES = {
+    None: [
+        {'code': 'en', 'name': 'English'},
+        {'code': 'ru', 'name': 'Русский'},
+    ],
+    'default': {
+        'fallbacks': ['en'],
+        'hide_untranslated': False,
+    }
+}
+
+
+
 
 ROOT_URLCONF = "config.urls"
 
@@ -77,12 +115,8 @@ USE_I18N = True
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
-MEDIA_ROOT = '/app/media'
 
-STATIC_URL = '/static/'
 
-STATIC_ROOT = '/app/static'
 
 CKEDITOR_UPLOAD_PATH = os.getenv('CKEDITOR_UPLOAD_PATH')
 
@@ -105,7 +139,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Lezgian",
     "welcome_sign": "Добро пожаловать!",
     "copyright": "Lezgian Development",
-    "search_model": ["auth.User", "yourapp.YourModel"],  # если хочешь поиск
+    "search_model": ["auth.User", "yourapp.YourModel"], 
 
     # Темы
     "theme": "cyborg",  # 👈 тёмная тема (или "flatly", "darkly", "lux" и др.)

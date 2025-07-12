@@ -1,0 +1,84 @@
+.parent {
+    background-color: var(--background-gray);
+}
+  
+  /* === ГРИД === */
+.container {
+    display: grid;
+    grid-template-columns: 13.66rem 1fr 11rem;
+    grid-template-areas:
+      "leftNav header  rightNav"
+      "leftNav main    rightNav";
+    padding: 0 2.66rem 4.54rem 0;
+}
+
+.header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding: 1.33rem 0.833rem 0.83rem 0.833rem;
+}
+
+.main {
+    padding:0 0.833rem 0 0.833rem;
+}
+
+.footer {
+    padding: 4.79rem 2.66rem;
+}
+  
+
+.header {
+    grid-area: header;
+}
+.leftNav {
+    grid-area: leftNav;
+}
+.rightNav {
+    grid-area: rightNav;
+    padding-top: 1.33rem;
+}
+.main {
+    grid-area: main;
+}
+
+
+.pageContent {
+    background-color: var(--white);
+    border-radius: 0.66rem;
+    padding: 1.66rem 1.33rem;
+}
+
+.footer {
+    padding: 2rem 1rem;
+}
+  
+
+@media (max-width: 1000px){
+    .container {
+        gap: .66rem;
+        
+        grid-template-areas:
+            "leftNav"
+            "header"
+            "rightNav"
+            "main";
+        grid-template-columns: none;
+        padding: 0;
+    }
+    .pageContent {
+        border-radius: 0.66rem;
+        padding: .66rem;
+        padding-bottom: 1.33rem;
+    }
+    .header {
+        padding: 0 .625rem;
+    }
+    .main {
+        padding:0 .625rem;
+    }
+    /*при изменении поменять calc в rightNav.module.css*/
+    .rightNav {
+        padding:0 .625rem;
+    }
+}
+  

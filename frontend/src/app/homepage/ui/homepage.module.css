@@ -1,0 +1,79 @@
+.container {
+    padding-bottom: 12.5rem;
+}
+
+.infoNews {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 3.91rem 1.3rem 4rem 0;
+}
+.news {
+    background-color: #58BCFF;
+    width: 19.2rem;
+    border-radius: 0.5rem;
+    margin-left: 0.75rem;
+
+    flex-shrink: 0;
+}
+
+.historyContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-left: 0.3rem;
+}
+.historySliderContainer {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+.lezStar {
+    width: 6.04rem;
+    height: 6.04rem;
+
+    margin-right: 1.7rem;
+    padding-top: 0.3rem;
+    flex-shrink: 0;
+}
+
+.navBlockContainer {
+    padding-left: 8rem;
+    padding-bottom: 4.875rem;
+}
+
+.companyInfoContainer {
+    position: relative;
+    padding-left: 6.875rem;
+
+    padding-top: 6.25rem;
+    padding-bottom: 5.41rem;
+}
+.birdImage {
+    top: 0;
+    left: 0.3rem;
+    position: absolute;
+    width: 16.79rem;
+
+    z-index: -1;
+}
+
+.partnersContainer {
+    margin-bottom: 5.83rem;
+}
+
+.projectsContainer {
+    padding: 0 9.16rem;
+    position: relative;
+}
+.starRed {
+    height: 17.5rem;
+    width: auto;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.leftStarRed {
+    left: -0.2rem;
+}
+.rightStarRed {
+    right: -0.2rem;
+}

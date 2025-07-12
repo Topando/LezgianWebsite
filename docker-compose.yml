@@ -13,6 +13,7 @@ services:
       - "8000:8000"
     environment:
       - DEBUG=1
+      - BASE_URL=http://localhost:8000
     command: python manage.py runserver 0.0.0.0:8000
 
     depends_on:
@@ -40,6 +41,45 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  node-exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/rootfs
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    depends_on:
+      - node-exporter
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    env_file:
+      - .env
+    environment:
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
+      - GF_DEFAULT_UI_LOCALE=ru
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "4000:3000"
+    depends_on:
+      - prometheus
+    restart: unless-stopped
 volumes:
   postgres_data:
+  grafana-data:
 

@@ -1,0 +1,1 @@
+export { Congresses as default } from './ui/congresses';

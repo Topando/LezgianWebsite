@@ -1,0 +1,99 @@
+.title {
+    font-size: var(--s20);
+
+    margin-bottom: 2.29rem;
+}
+.mainInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.33rem;
+
+    margin-bottom: 0.833rem;
+}
+.formElem input{
+    padding: 0.5rem 0.66rem;
+    width: 100%;
+
+    font-size: var(--s16);
+    color: var(--text-gray);
+
+    border-bottom: 1px solid rgb(130, 130, 130);
+}
+.formElem input::placeholder {
+    opacity: 1;
+    font-size: var(--s16);
+    color: var(--text-gray);
+}
+.placeholderPhone {
+    font-size: var(--s12);
+    font-weight: 400;
+}
+.checkBoxContainer {
+    display: flex;
+    gap: 0.4rem;
+
+    margin-bottom: 0.833rem;
+}
+.labelCheckBox {
+    font-size: var(--s12);
+    font-weight: 300;
+    color: var(--text-gray);
+}
+.buttonSendContainer {
+    display: flex;
+    justify-content: right;
+}
+.buttonSend {
+    background-color: var(--dark-blue);
+    padding: 0.5rem 2.375rem;
+    border-radius: 0.33rem;
+
+    font-size: var(--s16);
+    color: var(--white);
+}
+.errorMessage {
+    font-size: var(--s20);
+    font-weight: 600;
+    margin-bottom: .7rem;
+}
+.successMessage {
+    font-size: var(--s20);
+    font-weight: 600;
+    margin-bottom: .7rem;
+}
+
+@media (max-width: 1000px){
+    .title {
+        font-size: var(--s16);
+        font-weight: 600;
+    
+        margin-bottom: 1.33rem;
+    }
+    .mainInputs {
+        grid-template-columns: 1fr;
+        gap: 2.16rem;
+    
+        margin-bottom: 0.833rem;
+    }
+    .formElem input{
+        padding: 0.5rem 0.66rem;
+        width: 100%;
+    
+        font-size: var(--s14);
+    
+        border-bottom: 1px solid rgb(130, 130, 130);
+    }
+    .formElem input::placeholder {
+        font-size: var(--s14);
+    }
+    .checkBoxContainer {
+        gap: 0.33rem;
+        align-items: flex-start;
+    }
+    .buttonSendContainer {
+        justify-content: center;
+    }
+    .buttonSend {
+       flex: 1;
+    }
+}

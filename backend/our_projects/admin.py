@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from parler.admin import TranslatableAdmin
 
 from our_projects.models import OurProject
 
@@ -29,3 +30,5 @@ class OurProjectAdmin(admin.ModelAdmin):
         return "Нет изображения"
 
     image_preview.short_description = "Превью фотографии"
+
+

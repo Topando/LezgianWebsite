@@ -1,0 +1,1 @@
+export {OurProjects} from './ui/ourProjects';

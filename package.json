@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "domhandler": "^5.0.3",
+    "framer-motion": "^12.9.2",
+    "html-react-parser": "^5.2.5",
+    "inputmask": "^5.0.9",
+    "react-input-mask": "^2.0.4"
+  }
+}

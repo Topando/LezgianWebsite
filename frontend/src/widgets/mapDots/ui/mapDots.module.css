@@ -1,0 +1,108 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+  
+.mapImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.mapDot {
+    position: absolute;
+    width: .65rem;
+    height: .65rem;
+    background-color: white;
+    border: .16rem solid red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.modalDot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 0;
+    top: 0;
+    background: var(--white);
+    padding: .66rem 1.33rem;
+    border-radius: .66rem;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+    z-index: 999;
+    pointer-events: none;
+    translate: 60% 0;
+
+    width: 10rem;
+}
+
+.headerDot {
+    font-weight: 600;
+    font-size: var(--s20);
+    margin-bottom: .33rem;
+}
+
+.descDot {
+    font-size: var(--s16);
+    font-weight: 500;
+    margin-bottom: .5rem;
+    text-wrap: wrap;
+}
+
+
+.mobileDescContainer {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+    padding: 1rem 0;
+    gap: .66rem;
+
+    box-sizing: border-box;
+    scrollbar-width: none;
+
+    display: none;
+}
+.mobileDescContainer::-webkit-scrollbar {
+    display: none;
+}
+  
+.elemDesc {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+    width: 85%;
+  
+    padding: 0.66rem;
+    border-radius: 0.33rem;
+    box-shadow:
+      0px 0px 4px 0px rgba(0, 0, 0, 0.05),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.02);
+}
+  
+.mobileName {
+    font-size: var(--s16);
+    font-weight: 600;
+    margin-bottom: .66rem;
+}
+.mobileDesc {
+    font-size: var(--s14);
+    line-height: 160%;
+    letter-spacing: 0%;
+}
+
+@media (max-width: 1000px){
+    .modalDot{
+        display:none;
+    }
+    .mobileDescContainer {
+        display: flex;
+    }
+    .mapDot {
+        width: .5rem;
+        height: .5rem;
+        border: .13rem solid red;
+    }
+}

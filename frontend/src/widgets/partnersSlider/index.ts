@@ -1,0 +1,1 @@
+export {PartnersSlider} from './ui/partnersSlider';

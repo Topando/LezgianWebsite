@@ -1,0 +1,11 @@
+{
+    "links": {
+        "main": "Главная",
+        "about-us": "О нас",
+        "congresses": "Съезды",
+        "contacts": "Контакты",
+        "reports": "Отчеты",
+        "projects": "Проекты",
+        "docs": "Документы"
+    }
+}

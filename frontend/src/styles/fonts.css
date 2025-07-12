@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'interFont';
+    src: url('/fonts/interFont.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+  }
+  
+  :root {
+    --s12:0.5rem;
+    --s14:0.5833rem;
+    --s16:0.66rem;
+    --s18: 0.75rem;
+    --s20:0.83rem;
+    --s24:1rem;
+    --s28: 1.16rem;
+    --s32:1.33rem;
+    --s36:1.5rem;
+    --s48:1.8rem;
+  }
