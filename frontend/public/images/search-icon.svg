@@ -1,6 +1,16 @@
-<svg width="19.778076" height="20.071045" viewBox="0 0 19.7781 20.071" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<defs/>
-	<rect id="фрейм 1" width="19.424561" height="19.717514" fill="#FFFFFF" fill-opacity="0"/>
-	<circle id="Ellipse 1" cx="7.500000" cy="7.500000" r="7.000000" stroke="#000000" stroke-opacity="1.000000" stroke-width="1.000000"/>
-	<line id="Line 2" x1="12.353516" y1="12.646484" x2="19.424561" y2="19.717529" stroke="#000000" stroke-opacity="1.000000" stroke-width="1.000000"/>
+<svg width="20.000000" height="20.000000" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip205_78">
+			<rect id="lucide/search" rx="0.000000" width="19.166666" height="19.166666" transform="translate(0.416667 0.416667)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g opacity="0.400000">
+		<rect id="lucide/search" rx="0.000000" width="19.166666" height="19.166666" transform="translate(0.416667 0.416667)" fill="#FFFFFF" fill-opacity="0"/>
+		<g clip-path="url(#clip205_78)">
+			<path id="Vector" d="M17.5 17.5L13.88 13.88M9.16 15.83C5.48 15.83 2.5 12.84 2.5 9.16C2.5 5.48 5.48 2.5 9.16 2.5C12.84 2.5 15.83 5.48 15.83 9.16C15.83 12.84 12.84 15.83 9.16 15.83Z" stroke="#363636" stroke-opacity="1.000000" stroke-width="1.666667" stroke-linejoin="round" stroke-linecap="round"/>
+		</g>
+	</g>
 </svg>

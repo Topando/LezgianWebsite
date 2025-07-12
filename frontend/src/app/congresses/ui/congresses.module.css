@@ -2,52 +2,21 @@
     font-size: var(--s28);
     font-weight: 700;
 }
-.separator {
-    border: 1px solid var(--border-gray);
-
-    margin: 2.5rem 0;
-}
 .elemHeader {
-    font-weight: var(--s20);
-    font-weight: 500;
-
-    margin-bottom: 0.9rem;
-}
-
-/*стили для текста из ворд админки*/
-.content p {
-    font-size: var(--s16);
-    line-height: 160%;
-    letter-spacing: 0%;
-    text-align: left;
-
-    margin-bottom: 0.66rem;
-}
-.content h2 {
-    font-size: var(--s28);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-.content h3 {
     font-size: var(--s20);
-    font-weight: 600;
-    margin-bottom: 1.2rem;
+
+    margin-bottom: .9rem;
 }
-.content h4 {
-    font-size: var(--s18);
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-}
-.content li {
-    font-size: var(--s16);
-    margin-bottom: 0.2rem;
-}
-.content a {
-    font-size: var(--s16);
-    font-weight: 500;
-    color:var(--light-blue);
-    text-decoration: underline;
-}
-.content strong {
-    font-weight: 700;
+
+@media (max-width: 1000px){
+    .headerPage {
+        font-size: var(--s20);
+        font-weight: 500;
+    }
+    .elemHeader {
+        font-size: var(--s16);
+        font-weight: 600;
+    
+        margin-bottom: .666rem;
+    }
 }

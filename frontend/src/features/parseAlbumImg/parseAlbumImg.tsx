@@ -46,11 +46,23 @@ export function parseBody(html: string, styles: Record<string, string>): ReactNo
 
   const flushAlbum = () => {
     if (albumGroup.length > 0) {
+      const count = albumGroup.length;
+      const layoutClass = styles[`albumLayout_${count}`];
+  
       result.push(
-        <div className={styles.album} key={`album-${result.length}`}>
-          {albumGroup.splice(0)}
+        <div className={`${styles.album} ${layoutClass}`} key={`album-${result.length}`}>
+          {albumGroup.map((elem, ind) => (
+            <div 
+              className={`${styles.containerImg} ${albumGroup.length%2!==0 && ind === 0? styles.bigContainerImg: ''}`} 
+              key={ind}
+            >
+              {elem}
+            </div>
+          ))}
         </div>
       );
+  
+      albumGroup.length = 0;
     }
   };
 

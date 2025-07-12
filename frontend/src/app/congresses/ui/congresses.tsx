@@ -2,11 +2,14 @@
 "use client"
 
 import styles from "./congresses.module.css";
+
 import { useEffect, useState, useMemo } from "react";
+
 import { CongressesType, congressesGet } from "@/shared/api/endpoints/congresses";
 import { useRightNav } from '@/shared/context/RightNavContext';
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
-import { parseBody } from "@/features/parseAlbumImg/parseAlbumImg";
+import { HtmlBlock } from "@/features/htmlBlock";
+import { Separator } from "@/features/separator";
 
 export function Congresses() {
   const [data, setData] = useState<CongressesType[]>([]);
@@ -43,10 +46,11 @@ export function Congresses() {
 
       {data.map((elem, ind) => (
         <div key={ind} id={`${ind}`} className={styles.item}>
-          <div className={styles.separator}></div>
+          <Separator/>
+
           <p className={styles.elemHeader}>{elem.title}</p>
           <div className={styles.content}>
-            {parseBody(elem.body, styles)}
+            <HtmlBlock body={elem.body}/>
           </div>
         </div>
       ))}

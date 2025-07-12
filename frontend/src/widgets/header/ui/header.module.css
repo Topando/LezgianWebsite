@@ -31,8 +31,7 @@
     width: 100%;
 }
 .searchButton {
-    width: 0.833rem;
-    opacity: 0.4;
+    width: .833rem;
 }
 .searchContainer button {
     display: flex;
@@ -56,10 +55,10 @@
         background-color: var(--white);
     }
     .searchButton {
-        opacity: 0.7;
+        width: 1rem;
     }
     .searchContainer button {
-        padding: .5rem .66rem;
+        padding: .4rem .5rem;
 
         background-color: #F8F8F8;
         border-radius: .33rem;
