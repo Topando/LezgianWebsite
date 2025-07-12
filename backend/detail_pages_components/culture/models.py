@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
-from parler.models import TranslatedFields, TranslatableModel
 
 
-class OurProject(models.Model):
+
+class Culture(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
     slug = models.SlugField(verbose_name="Символьный код", blank=True, unique=True)
     announcement = models.TextField(verbose_name="Анонс")
@@ -14,9 +14,8 @@ class OurProject(models.Model):
 
 
     class Meta:
-        db_table = "Our_Projects"
-        verbose_name = "Проект"
-        verbose_name_plural = "Проекты"
+        verbose_name = "Культура"
+        verbose_name_plural = "Культура"
 
     def save(self, *args, **kwargs):
         if not self.slug:
