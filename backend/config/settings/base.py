@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 BASE_URL   = os.getenv("BASE_URL", "http://localhost:8000")
 MEDIA_URL  = f"{BASE_URL}/media/"
 STATIC_URL = '/static/'
@@ -37,12 +38,15 @@ INSTALLED_APPS = [
     "detail_pages_components.history.apps.HistoryConfig",
     "detail_pages_components.culture.apps.CultureConfig",
     "detail_pages_components.language.apps.LanguageConfig",
+    "detail_pages_components.news_on_main.apps.NewsOnMainConfig",
     'our_projects',
+    'media_library',
     'documents',
     "contacts",
     "reports",
     "about_us",
     "feedback_form",
+    # "telegram_feed",
 ]
 
 
