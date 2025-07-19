@@ -38,9 +38,7 @@ const getTitleFromPath = (path: string): string => {
 
 export const PageTitle = () => {
     const pathname = usePathname();
-    console.log(pathname);
     const title = getTitleFromPath(pathname);
-    console.log(title);
 
     return <>{title}</>;
 };

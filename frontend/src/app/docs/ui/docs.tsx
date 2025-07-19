@@ -5,13 +5,11 @@ import styles from "./docs.module.css";
 import { useState, useEffect, useMemo } from 'react';
 import Image from "next/image";
 import { Docs, docs } from "@/shared/api/endpoints/docs";
-import { useRightNav } from '@/shared/context/RightNavContext';
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 import { Separator } from "@/features/separator";
 
 export function DocsPage () {
     const [data, setData] = useState<Docs[]>([]);
-    const { setContent } = useRightNav();
 
     useEffect(() => {
         const getData = async () => {
@@ -35,13 +33,11 @@ export function DocsPage () {
         return [...base, ...dynamic];
     }, [data]);
 
-    useEffect(() => {
-        setContent(<PageSectionsNav sections={sections} />);
-        return () => setContent(null);
-    }, [sections, setContent]);
 
     return (
         <div className={styles.container}>
+            <PageSectionsNav sections={sections}/>
+
             <p className={styles.heading}>Документы</p>
             <Separator/>
 

@@ -6,7 +6,12 @@ import { useEffect, useRef, useState } from 'react';
 import Inputmask from 'inputmask';
 // import { sendFeedback } from "@/shared/api/endpoints/feedback-form";
 
-export function FeedbackForm() {
+interface Props {
+  title?: string;
+  otherComment?: string;
+}
+
+export function FeedbackForm({title = 'Обратная связь', otherComment}: Props) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -36,7 +41,9 @@ export function FeedbackForm() {
       setError("Необходимо согласиться с обработкой персональных данных.");
       return;
     }
-    console.log(formData.phone);
+    if (otherComment) {
+      formData.comment = `Запись на мероприятие:\n${otherComment}\nКомментарий:\n${formData.comment}`;
+    }
 
     // try {
     //   const response = await sendFeedback(
@@ -57,7 +64,7 @@ export function FeedbackForm() {
 
   return (
     <div className={styles.container}>
-          <p className={styles.title}>Обратная связь</p>
+          <p className={styles.title}>{title}</p>
           {error && <p className={styles.errorMessage}>{error}</p>}
           {isSubmitted ? (
             <div className={styles.successMessage}>
@@ -151,14 +158,12 @@ function PhoneInput({ value, onChange }: {
         autoUnmask: true,
         placeholder: '_',
         onincomplete: () => {
-          // Обработка неполного ввода
           onChange('');
         }
       });
       
       imRef.current.mask(ref.current);
 
-      // Инициализация значения
       if (value) {
         ref.current.value = value;
       }
