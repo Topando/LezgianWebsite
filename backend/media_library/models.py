@@ -1,7 +1,7 @@
 from django.db import models
 
 class MediaLibrary(models.Model):
-    image = models.ImageField(upload_to='media/media-library')
+    image = models.ImageField(upload_to='media-library')
 
     class Meta:
         verbose_name = 'Медиатека'

@@ -1,8 +1,13 @@
 from django.db import models
+from parler.models import TranslatedFields, TranslatableModel
 
-class TypeDocument(models.Model):
-    title = models.CharField(max_length=255, verbose_name="Название")
-    description = models.TextField(null=True, blank=True, verbose_name="Описание")
+
+class TypeDocument(TranslatableModel):
+    translations = TranslatedFields(
+        title=models.CharField(max_length=255, verbose_name="Название"),
+        description=models.TextField(verbose_name="Описание"),
+    )
+
     order = models.PositiveSmallIntegerField(default=10, verbose_name="Сортировка")
     class Meta:
         verbose_name = "Тип документов"

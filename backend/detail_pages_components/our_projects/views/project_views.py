@@ -3,8 +3,8 @@ from rest_framework import mixins
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from our_projects.models import OurProject
-from our_projects.serializers.gallery_serializer import OurProjectsGallerySerializer, OurProjectDetailSerializer
+from detail_pages_components.our_projects.models import OurProject
+from detail_pages_components.our_projects.serializers.gallery_serializer import OurProjectsGallerySerializer, OurProjectDetailSerializer
 
 
 class OurProjectsViewSet(mixins.ListModelMixin,

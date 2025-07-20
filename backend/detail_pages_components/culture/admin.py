@@ -1,19 +1,16 @@
 from django.contrib import admin
-
+from parler.admin import TranslatableAdmin
 from detail_pages_components.culture.models import Culture
 
-
 @admin.register(Culture)
-class CultureAdmin(admin.ModelAdmin):
-    """Admin for Event model with image preview and search."""
-    list_display = ('name', 'order')
-    search_fields = ('name', 'announcement', 'description')
-    prepopulated_fields = {'slug': ('name',)}
+class CultureAdmin(TranslatableAdmin):
+    list_display = ("name", "order")
+    search_fields = ("name", "announcement", "description")
     fieldsets = (
         (None, {
-            'fields': ('name', 'slug', 'announcement', 'description')
+            "fields": ("name", "announcement", "description"),
         }),
-        ('Дополнительные параметры', {
-            'fields': ('image', 'order'),
+        ("Дополнительные параметры", {
+            "fields": ("image", "order", "slug"),
         }),
     )

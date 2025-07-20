@@ -1,19 +1,16 @@
 from django.contrib import admin
-
+from parler.admin import TranslatableAdmin
 from detail_pages_components.history.models import History
 
-
 @admin.register(History)
-class HistoryAdmin(admin.ModelAdmin):
-    """Admin for Event model with image preview and search."""
+class HistoryAdmin(TranslatableAdmin):
     list_display = ('name', 'order')
     search_fields = ('name', 'announcement', 'description')
-    prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
         (None, {
-            'fields': ('name', 'slug', 'announcement', 'description')
+            'fields': ('name', 'announcement', 'description'),
         }),
         ('Дополнительные параметры', {
-            'fields': ('image', 'order'),
+            'fields': ('image', 'order', 'slug'),
         }),
     )

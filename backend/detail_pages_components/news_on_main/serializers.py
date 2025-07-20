@@ -1,14 +1,16 @@
-from rest_framework import serializers
-
+from parler_rest.serializers import TranslatableModelSerializer
 from detail_pages_components.news_on_main.models import NewsOnMain
 
+class NewsOnMainSerializer(TranslatableModelSerializer):
+    translation_fields = ['name', 'announcement']
 
-class NewsOnMainSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsOnMain
         fields = ("id", "name", "slug", "announcement", "image")
 
-class NewsOnMainDetailSerializer(serializers.ModelSerializer):
+class NewsOnMainDetailSerializer(TranslatableModelSerializer):
+    translation_fields = ['name', 'announcement', 'description']
+
     class Meta:
         model = NewsOnMain
         fields = ("id", "name", "description", "announcement", "image")

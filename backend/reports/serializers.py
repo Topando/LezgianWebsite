@@ -1,9 +1,11 @@
-from rest_framework import serializers
+from parler_rest.serializers import TranslatableModelSerializer
 
 from reports.models import Report
 
 
-class ReportSerializer(serializers.ModelSerializer):
+class ReportSerializer(TranslatableModelSerializer):
+    translation_fields = ['menu_title', 'title', 'body']
+
     class Meta:
         model = Report
-        fields = '__all__'
+        fields = ('id', 'menu_title', 'title', 'body', 'order')

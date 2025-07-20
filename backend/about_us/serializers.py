@@ -1,9 +1,10 @@
-from rest_framework import serializers
+from parler_rest.serializers import TranslatableModelSerializer
 
 from about_us.models import About
 
 
-class AboutSerializer(serializers.ModelSerializer):
+class AboutSerializer(TranslatableModelSerializer):
+    translation_fields = ['menu_title', 'title', 'body']
     class Meta:
         model = About
-        fields = '__all__'
+        fields = ('id', 'menu_title', 'title', 'body', 'order')
