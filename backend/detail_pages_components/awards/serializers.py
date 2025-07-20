@@ -1,15 +1,17 @@
-from rest_framework import serializers
-
+from parler_rest.serializers import TranslatableModelSerializer
 from detail_pages_components.awards.models import Award
-from detail_pages_components.events.models import Event
 
+class AwardsSerializer(TranslatableModelSerializer):
+    translation_fields = ['name', 'announcement']
 
-class AwardsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Award
         fields = ("id", "name", "slug", "announcement", "image")
 
-class AwardsDetailSerializer(serializers.ModelSerializer):
+
+class AwardsDetailSerializer(TranslatableModelSerializer):
+    translation_fields = ['name', 'announcement', 'description']
+
     class Meta:
         model = Award
         fields = ("id", "name", "description", "announcement", "image")

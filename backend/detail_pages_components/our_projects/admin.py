@@ -2,14 +2,13 @@ from django.contrib import admin
 from django.utils.html import format_html
 from parler.admin import TranslatableAdmin
 
-from our_projects.models import OurProject
+from detail_pages_components.our_projects.models import OurProject
 
 
 @admin.register(OurProject)
-class OurProjectAdmin(admin.ModelAdmin):
+class OurProjectAdmin(TranslatableAdmin):
     list_display = ("name", "announcement", "order")
-    prepopulated_fields = {'slug': ('name',)}
-    list_filter = ("name", "order")
+    list_filter = ("order", )
     ordering = ("order", )
     list_editable = ("order",)
     fields = (

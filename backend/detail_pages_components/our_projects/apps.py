@@ -3,8 +3,8 @@ from django.apps import AppConfig
 
 class OurProjectsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "our_projects"
+    name = "detail_pages_components.our_projects"
     verbose_name = "Наши проекты"
 
     def ready(self):
-        import our_projects.signals.gallery_signals
+        import detail_pages_components.our_projects.signals.gallery_signals

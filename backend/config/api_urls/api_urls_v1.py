@@ -1,8 +1,7 @@
 from django.urls import path, include
 
 urlpatterns = [
-    path('partners-gallery/', include('content_list.partners.urls')),
-    path('projects/', include('our_projects.urls')),
+    path('projects/', include('detail_pages_components.our_projects.urls')),
     path('events/', include('detail_pages_components.events.urls')),
     path('awards/', include('detail_pages_components.awards.urls')),
     path('society/', include('detail_pages_components.society.urls')),
