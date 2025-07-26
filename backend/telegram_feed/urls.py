@@ -1,8 +1,8 @@
-import asyncio
+from rest_framework.routers import DefaultRouter
 
-from django.urls import path
+from telegram_feed.views import TelegramFeedViewSet
 
-from telegram_feed.views import LatestPosts
-urlpatterns = [
-    path("", LatestPosts.as_view()),
-]
+router = DefaultRouter()
+router.register(r"", TelegramFeedViewSet, basename="tg-feed")
+
+urlpatterns = router.urls

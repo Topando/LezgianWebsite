@@ -8,15 +8,14 @@ class DocumentInline(admin.TabularInline):
     fields = ('title', 'file')
 
 @admin.register(TypeDocument)
-class DocumentAdmin(TranslatableAdmin):
+class TypeDocumentAdmin(TranslatableAdmin):
     list_display       = ("title", "description", "order")
     list_editable      = ("order",)
     ordering           = ("order",)
     search_fields      = ("translations__title", "translations__description")
     translation_fields = ("title", "description")
     inlines            = [DocumentInline]
+
     fieldsets = (
-        (None, {
-            'fields': ('title', 'description', 'order'),
-        }),
+        (None, {"fields": ("title", "description", "order")}),
     )

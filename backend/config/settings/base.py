@@ -47,13 +47,14 @@ INSTALLED_APPS = [
     "detail_pages_components.language.apps.LanguageConfig",
     "detail_pages_components.news_on_main.apps.NewsOnMainConfig",
     "detail_pages_components.our_projects.apps.OurProjectsConfig",
+    "detail_pages_components.awards_candidate.apps.AwardsCandidateConfig",
     'media_library',
     'documents',
     "contacts",
     "reports",
     "about_us",
     "feedback_form",
-    # "telegram_feed",
+    "telegram_feed",
 ]
 
 MIDDLEWARE = [

@@ -12,6 +12,11 @@ class TypeDocument(TranslatableModel):
     class Meta:
         verbose_name = "Тип документов"
         verbose_name_plural = "Типы документов"
+        ordering = ("order",)
+
+    def __str__(self) -> str:
+        return self.safe_translation_getter("title", any_language=True) or "—"
+
 
 class Document(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название")
@@ -22,3 +27,5 @@ class Document(models.Model):
         verbose_name = "Документы"
         verbose_name_plural = verbose_name
 
+    def __str__(self) -> str:
+        return self.title
