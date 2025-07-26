@@ -29,7 +29,7 @@ export default function DetailPage ({ slug }: Props) {
 
     return(
         <div>
-            <PageSectionsNav sections={SectionsMainPage}/>
+            <PageSectionsNav sections={SectionsMainPage()}/>
             {data? (
                 <DetailNewsPage data={data}/>
             ):(<></>)}

@@ -17,7 +17,7 @@ export default function DetailPage ({ slug }: Props) {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await detailNewsGet('society', slug);
+                const response = await detailNewsGet('events', slug);
                 setData(response);
             } catch (err) {
                 console.log(err);

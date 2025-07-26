@@ -2,6 +2,7 @@
 
 import styles from "./about.module.css";
 
+import { useTranslations } from 'next-intl';
 import { useEffect, useState, useMemo} from "react";
 
 import { MapDots } from "@/widgets/mapDots";
@@ -12,6 +13,7 @@ import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 
 
 export function AboutPage () {
+    const nT = useTranslations('namePages');
     const [data, setData] = useState<AboutType[]>([]);
 
     useEffect(() => {
@@ -38,7 +40,7 @@ export function AboutPage () {
         <div className={styles.container}>
             <PageSectionsNav sections={sections}/>
 
-            <p className={styles.headerPage}>О нас</p>
+            <p className={styles.headerPage}>{nT('about-us')}</p>
 
 
             <div className={styles.itemsContent}>

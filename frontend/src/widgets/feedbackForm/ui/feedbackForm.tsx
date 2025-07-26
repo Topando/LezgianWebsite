@@ -2,9 +2,10 @@
 
 import styles from "./feedbackForm.module.css";
 
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import Inputmask from 'inputmask';
-// import { sendFeedback } from "@/shared/api/endpoints/feedback-form";
+import { sendFeedback } from "@/shared/api/endpoints/feedback-form";
 
 interface Props {
   title?: string;
@@ -12,6 +13,9 @@ interface Props {
 }
 
 export function FeedbackForm({title = 'Обратная связь', otherComment}: Props) {
+  const cT = useTranslations('common');
+  title = title === 'Обратная связь' ? cT('feedback'): title;
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -45,21 +49,22 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
       formData.comment = `Запись на мероприятие:\n${otherComment}\nКомментарий:\n${formData.comment}`;
     }
 
-    // try {
-    //   const response = await sendFeedback(
-    //     formData.phone,
-    //     formData.name,
-    //     formData.comment
-    //   );
-    //   if (response) {
-    //     setIsSubmitted(true);
-    //   } else {
-    //     setError("Не удалось отправить заявку. Попробуйте снова.");
-    //   }
-    // } catch (err) {
-    //   setError("Произошла ошибка. Попробуйте позже.");
-    //   console.error(err);
-    // }
+    try {
+      const response = await sendFeedback(
+        formData.name,
+        formData.phone,
+        formData.email,
+        formData.comment
+      );
+      if (response) {
+        setIsSubmitted(true);
+      } else {
+        setError("Не удалось отправить заявку. Попробуйте снова.");
+      }
+    } catch (err) {
+      setError("Произошла ошибка. Попробуйте позже.");
+      console.error(err);
+    }
   };
 
   return (
@@ -82,7 +87,7 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Имя"
+                  placeholder={cT('name')}
                 />
               </div>
 
@@ -102,12 +107,12 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
                   name="comment"
                   value={formData.comment}
                   onChange={handleChange}
-                  placeholder="Сообщение"
+                  placeholder={cT('message')}
                 />
               </div>
 
               <div className={styles.formElem}>
-                <p className={styles.placeholderPhone}>Номер телефона</p>
+                <p className={styles.placeholderPhone}>{cT('phone-num')}</p>
                 <PhoneInput 
                   value={formData.phone} 
                   onChange={(phone) => setFormData(prev => ({...prev, phone}))} 
@@ -125,13 +130,13 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
                 className={styles.checkBox}
               />
               <label htmlFor="check" className={styles.labelCheckBox}>
-                «Я согласен(а) с политикой обработки персональных данных»
+                 {cT('conf-check')}
               </label>
             </div>
 
             <div className={styles.buttonSendContainer}>
               <button type="submit" className={styles.buttonSend}>
-                Отправить
+                {cT('send')}
               </button>
             </div>
           </form>
@@ -191,7 +196,6 @@ function PhoneInput({ value, onChange }: {
       ref={ref}
       type="tel"
       inputMode="tel"
-      pattern="[0-9]*"
       value={inputValue}
       onChange={handleChange}
       placeholder="+7"

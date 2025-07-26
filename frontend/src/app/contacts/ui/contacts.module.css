@@ -23,6 +23,18 @@
 .desc {
     font-size: var(--s16);
 }
+.phonesCont {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: .5rem;
+}
+.container a {
+    transition: color .3s ease;
+}
+.container a:hover {
+    color: var(--light-blue);
+}
 .separatorMobile {
     display: none;
 }

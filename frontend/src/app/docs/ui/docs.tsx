@@ -2,6 +2,7 @@
 
 import styles from "./docs.module.css";
 
+import { useTranslations } from 'next-intl';
 import { useState, useEffect, useMemo } from 'react';
 import Image from "next/image";
 import { Docs, docs } from "@/shared/api/endpoints/docs";
@@ -9,6 +10,8 @@ import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 import { Separator } from "@/features/separator";
 
 export function DocsPage () {
+    const nT = useTranslations('namePages');
+    const cT = useTranslations('common');
     const [data, setData] = useState<Docs[]>([]);
 
     useEffect(() => {
@@ -25,7 +28,7 @@ export function DocsPage () {
     }, []);
 
     const sections = useMemo(() => {
-        const base = [{ id: "0", label: "Устав ФЛНКА" }];
+        const base = [{ id: "0", label: cT('short-regulation') }];
         const dynamic = data.map((item, index) => ({
             id: `${index + 1}`,
             label: item.title,
@@ -38,12 +41,12 @@ export function DocsPage () {
         <div className={styles.container}>
             <PageSectionsNav sections={sections}/>
 
-            <p className={styles.heading}>Документы</p>
+            <p className={styles.heading}>{nT('docs')}</p>
             <Separator/>
 
             <div className={styles.articlesCompany} id="0">
-                <h1 className={styles.titleDocs}>Устав Федеральной Лезгинской НКА</h1>
-                <p className={styles.descText}>Это основной документ, регламентирующий деятельность организации. В нем зафиксированы цели и задачи ФЛНКА, структура, порядок принятия решений, права и обязанности членов.</p>
+                <h1 className={styles.titleDocs}>{cT('regulation')}</h1>
+                <p className={styles.descText}>{cT('base-docs')}</p>
             </div>
 
             {data.map((item, ind) => (
@@ -73,7 +76,7 @@ export function DocsPage () {
                                             />
                                             <p className={styles.fileTitle}>{elem.title}</p>
                                         </div>
-                                        <p className={styles.download}>Скачать</p>
+                                        <p className={styles.download}>{cT('download')}</p>
                                     </div>
                                 </a>
                             ))}

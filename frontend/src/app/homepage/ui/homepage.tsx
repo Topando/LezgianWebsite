@@ -10,7 +10,7 @@ export function HomepageContent () {
 
     return (
         <div>
-          <PageSectionsNav sections={SectionsMainPage}/>
+          <PageSectionsNav sections={SectionsMainPage()}/>
         </div>
     )
 }
