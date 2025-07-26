@@ -52,7 +52,12 @@ export function ContactsPage() {
 
                     <div className={styles.elemContact}>
                         <p className={styles.title}>{cmT('phone')}</p>
-                        <p className={styles.desc}>{data?.phone}</p>
+                        <div className={styles.phonesCont}>
+                            {data?.phones.map((ph, ind)=> (
+                                <a className={styles.desc} href={`tel:${ph.phone}`} key={ind}>{ph.phone}</a>    
+                            ))}
+
+                        </div>
                     </div>
 
                     <div className={styles.separatorMobile}>

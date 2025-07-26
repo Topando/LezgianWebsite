@@ -3,6 +3,7 @@
 
 import styles from "./congresses.module.css";
 
+import { useTranslations } from 'next-intl';
 import { useEffect, useState, useMemo } from "react";
 
 import { CongressesType, congressesGet } from "@/shared/api/endpoints/congresses";
@@ -11,6 +12,7 @@ import { HtmlBlock } from "@/features/htmlBlock";
 import { Separator } from "@/features/separator";
 
 export function Congresses() {
+  const nT = useTranslations('namePages');
   const [data, setData] = useState<CongressesType[]>([]);
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export function Congresses() {
     <div className={styles.container}>
       <PageSectionsNav sections={sections}/>
 
-      <p className={styles.headerPage}>Съезды</p>
+      <p className={styles.headerPage}>{nT('congresses')}</p>
 
       {data.map((elem, ind) => (
         <div key={ind} id={`${ind}`} className={styles.item}>

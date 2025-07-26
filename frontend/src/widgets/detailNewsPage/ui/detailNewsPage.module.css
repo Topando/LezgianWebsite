@@ -5,6 +5,7 @@
 .imageContainer {
     width: 100%;
     border-radius: .33rem;
+    overflow: hidden;
 
     margin-top: 2.5rem;
     margin-bottom: .833rem;
