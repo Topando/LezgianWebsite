@@ -12,14 +12,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='MediaLibrary',
+            name='TelegramPost',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='media-library')),
+                ('message_id', models.PositiveBigIntegerField(unique=True)),
+                ('chat_id', models.BigIntegerField()),
+                ('text', models.TextField(blank=True)),
+                ('photo_id', models.CharField(blank=True, max_length=200)),
+                ('date', models.DateTimeField()),
             ],
             options={
-                'verbose_name': 'Медиатека',
-                'verbose_name_plural': 'Медиатека',
+                'ordering': ['-date'],
             },
         ),
     ]

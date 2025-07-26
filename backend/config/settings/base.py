@@ -90,7 +90,7 @@ PARLER_LANGUAGES = {
 }
 PARLER_DEFAULT_LANGUAGE_CODE = 'ru'
 ROOT_URLCONF = "config.urls"
-
+LANGUAGE_CODE = "ru"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
