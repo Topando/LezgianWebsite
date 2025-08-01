@@ -4,6 +4,7 @@
 }
 .imageContainer {
     width: 100%;
+    aspect-ratio: 680 / 360;
     border-radius: .33rem;
     overflow: hidden;
 

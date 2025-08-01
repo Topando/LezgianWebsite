@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 
 import { DetailNewsType, detailNewsGet } from "@/shared/api/endpoints/news";
 import { DetailNewsPage } from "@/widgets/detailNewsPage";
-
+import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
+import { SectionsMainPage } from '@/shared/sectionsMainPage';
 
 interface Props {
     slug: string;
@@ -16,7 +17,7 @@ export default function DetailPage ({ slug }: Props) {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await detailNewsGet('projects', slug);
+                const response = await detailNewsGet('news-on-main', slug);
                 setData(response);
             } catch (err) {
                 console.log(err);
@@ -28,6 +29,7 @@ export default function DetailPage ({ slug }: Props) {
 
     return(
         <div>
+            <PageSectionsNav sections={SectionsMainPage()}/>
             {data? (
                 <DetailNewsPage data={data}/>
             ):(<></>)}

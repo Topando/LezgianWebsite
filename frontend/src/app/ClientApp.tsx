@@ -2,7 +2,6 @@ import IntlProviderWrapper from '@/shared/IntlProviderWrapper';
 import { RightNavProvider } from '@/shared/context/RightNavContext';
 import { LeftNav } from '@/widgets/leftNav';
 import { RightNav } from '@/widgets/rightNav';
-import { TelegramNewsServer } from "@/widgets/telegramNews/TelegramNewsServer";
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 
@@ -20,7 +19,6 @@ export default function ClientApp({ children }: { children: React.ReactNode }) {
 
             <aside className={styles.rightNav}>
               <RightNav />
-              <TelegramNewsServer />
             </aside>
 
             <main className={styles.main}>
@@ -29,7 +27,7 @@ export default function ClientApp({ children }: { children: React.ReactNode }) {
           </div>
 
           <footer className={styles.footer}>
-            {/*<Footer />*/}
+            <Footer />
           </footer>
         </div>
       </RightNavProvider>

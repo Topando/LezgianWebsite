@@ -7,19 +7,19 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ProjectsType, projectsGet } from '@/shared/api/endpoints/projects';
+import { NewsType, newsGet } from '@/shared/api/endpoints/news';
 import { replaceLocalhostWithBackend } from '@/features/makeRelativePath';
 import { Separator } from '@/features/separator';
 
 export function ProjectsPage() {
   const nT = useTranslations('namePages');
   const cT = useTranslations('common');
-  const [data, setData] = useState<ProjectsType[]>([]);
+  const [data, setData] = useState<NewsType[]>([]);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await projectsGet();
+        const response = await newsGet('projects');
         setData(response);
       } catch (err) {
         console.log(err);

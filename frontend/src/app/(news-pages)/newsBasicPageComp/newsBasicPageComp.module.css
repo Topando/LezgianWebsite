@@ -20,7 +20,7 @@
     width: 100%;
     border-radius: 0.33rem;
     overflow: hidden;
-    height: 15rem;
+    aspect-ratio: 680 / 360;
     position: relative;
 }
 
@@ -81,7 +81,7 @@
         column-gap: 0;
     }
     .imageContainer{
-        height: 11.66rem;
+        aspect-ratio: 680 / 360;
     }
     .newsName{
         font-weight: 600;
