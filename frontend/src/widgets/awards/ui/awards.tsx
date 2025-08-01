@@ -36,13 +36,13 @@ export function Awards () {
                     <Link key={ind} className={styles.eventElem} href={`/candidate-awards/${elem.slug}`}>
                         <div className={styles.imgContainer}>
                             <Image
-                                src={replaceLocalhostWithBackend(elem.photo)}
+                                src={replaceLocalhostWithBackend(elem.image)}
                                 width={200}
                                 height={200}
-                                alt={elem.title}
+                                alt={elem.name}
                             />
                         </div>
-                        <p className={styles.eventTitle}>{elem.title}</p>
+                        <p className={styles.eventTitle}>{elem.name}</p>
                         <p className={styles.eventAnonse}>{parseOnlyText(elem.description)}</p>
                         
                     </Link>
