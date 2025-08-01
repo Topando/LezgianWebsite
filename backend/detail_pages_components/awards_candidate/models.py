@@ -8,11 +8,11 @@ from django.utils.text import slugify
 
 class CandidateAwards(TranslatableModel):
     translations = TranslatedFields(
-        title=models.CharField(max_length=100, verbose_name="Название"),
+        name=models.CharField(max_length=100, verbose_name="Название"),
         description=CKEditor5Field('Текст', config_name='default'),
     )
     slug = models.SlugField(verbose_name="Символьный код", blank=True, unique=True, null=True)
-    photo = models.ImageField(upload_to='awards_candidate/%Y/%m/%d/', verbose_name="Фото")
+    image = models.ImageField(upload_to='awards_candidate/%Y/%m/%d/', verbose_name="Фото")
 
     class Meta:
         verbose_name = "Премия"
@@ -21,7 +21,7 @@ class CandidateAwards(TranslatableModel):
 
 
     def __str__(self):
-        return self.safe_translation_getter('title', any_language=True)
+        return self.safe_translation_getter('name', any_language=True)
 
 
 class Candidate(models.Model):

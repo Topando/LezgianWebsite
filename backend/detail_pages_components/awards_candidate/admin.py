@@ -11,12 +11,12 @@ class CandidateInline(admin.TabularInline):
 
 @admin.register(CandidateAwards)
 class CandidateAwardsAdmin(TranslatableAdmin):
-    list_display = ('title', 'slug', 'photo', 'get_candidates')
-    search_fields = ('translations__title', 'slug')
+    list_display = ('name', 'slug', 'image', 'get_candidates')
+    search_fields = ('translations__name', 'slug')
     inlines = [CandidateInline]
     fieldsets = (
         ('Основное', {
-            'fields': ('title', 'description', 'photo'),
+            'fields': ('name', 'description', 'image'),
         }),
         ('Дополнительно', {
             'fields': ('slug',),

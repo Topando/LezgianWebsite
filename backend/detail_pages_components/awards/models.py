@@ -3,8 +3,10 @@ from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
 
+from search.handler import SearchableMixin
 
-class Award(TranslatableModel):
+
+class Award(SearchableMixin, TranslatableModel):
     translations = TranslatedFields(
         name         = models.CharField(max_length=100, verbose_name="Название"),
         announcement = models.TextField(verbose_name="Анонс"),
