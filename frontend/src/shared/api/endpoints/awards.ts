@@ -2,10 +2,10 @@ import apiClient from "../base";
 
 export interface AwardsType {
     id: number,
-    title: string,
+    name: string,
     slug: string,
     description: string,
-    photo: string
+    image: string
 }
 
 export interface CandidateType {
@@ -15,9 +15,9 @@ export interface CandidateType {
 }
 export interface AwardsDetailType {
     id: number,
-    title: string,
+    name: string,
     description: string,
-    photo: string,
+    image: string,
     candidates: CandidateType[],
 }
 
