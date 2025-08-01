@@ -17,12 +17,16 @@ class GlobalSearchView(APIView):
         for model in SEARCH_MODELS:
             for row in model.search(query, lang):
                 results.append({
-                    "id":           row["id"],
-                    "title":        row["translations__name"],
+                    "id": row["id"],
+                    "title": row["translations__name"],
                     "announcement": row["translations__announcement"],
-                    "slug":         row["slug"],
-                    "model":        model._meta.model_name,          # название таблицы/модели
-                    "image":        request.build_absolute_uri(row["image"]) if row["image"] else None,
+                    "slug": row["slug"],
+                    "model": model._meta.model_name,
+                    "image": (
+                        request.build_absolute_uri(
+                            f"{settings.MEDIA_URL}{row['image']}"
+                        ) if row["image"] else None
+                    ),
                 })
 
         return Response(results)
