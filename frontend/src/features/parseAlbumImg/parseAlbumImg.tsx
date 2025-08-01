@@ -87,12 +87,3 @@ export function parseBody(html: string, styles: Record<string, string>): ReactNo
 
   return result;
 }
-
-
-export function parseOnlyText(html: string): string {
-  return html
-    .replace(/<figure.*?>.*?<\/figure>/gs, " ") 
-    .replace(/<[^>]+>/g, " ") 
-    .replace(/\s+/g, " ") 
-    .trim();
-}

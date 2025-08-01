@@ -6,7 +6,6 @@
 .container {
     display: grid;
     grid-template-columns: 13.66rem 1fr 11rem;
-    grid-template-rows: auto 1fr;
     grid-template-areas:
       "leftNav header  rightNav"
       "leftNav main    rightNav";

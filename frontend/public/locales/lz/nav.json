@@ -1,11 +1,11 @@
 {
     "links": {
-        "main": "Кьилин чин",
-        "about-us": "Чакай",
-        "congresses": "КIватI хьунар",
-        "contacts": "Алакъаяр",
-        "reports": "Отчетар",
-        "projects": "Проектар",
-        "docs": "Документар"
+        "main": "Главная",
+        "about-us": "О нас",
+        "congresses": "Съезды",
+        "contacts": "Контакты",
+        "reports": "Отчеты",
+        "projects": "Проекты",
+        "docs": "Документы"
     }
 }

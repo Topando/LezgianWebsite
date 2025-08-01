@@ -1,1 +1,0 @@
-export { SocietyPage as default } from './ui/society';

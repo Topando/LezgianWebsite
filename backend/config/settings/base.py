@@ -1,20 +1,11 @@
 from pathlib import Path
 import os
 
-
-from django.conf.locale import LANG_INFO
-
-LANG_INFO['lez'] = {
-    'bidi': False,           # не RTL
-    'code': 'lez',           # именно этот код
-    'name': 'Lezgin',        # имя по-английски
-    'name_local': 'Лезгинский',  # имя на самом языке (опционально)
-}
-
-BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
-MEDIA_URL = f"{BASE_URL}/media/"
+BASE_URL   = os.getenv("BASE_URL", "http://localhost:8000")
+MEDIA_URL  = f"{BASE_URL}/media/"
 STATIC_URL = '/static/'
 MEDIA_ROOT = '/media/'
+
 
 STATIC_ROOT = '/static/'
 
@@ -38,31 +29,24 @@ INSTALLED_APPS = [
     "django_prometheus",
     "corsheaders",
     'django_ckeditor_5',
+    'content_list.partners',
     'content_list.congresses',
-    "detail_pages_components.events.apps.EventsConfig",
-    "detail_pages_components.awards.apps.AwardsConfig",
-    "detail_pages_components.society.apps.SocietyConfig",
-    "detail_pages_components.history.apps.HistoryConfig",
-    "detail_pages_components.culture.apps.CultureConfig",
-    "detail_pages_components.language.apps.LanguageConfig",
-    "detail_pages_components.news_on_main.apps.NewsOnMainConfig",
-    "detail_pages_components.our_projects.apps.OurProjectsConfig",
-    "detail_pages_components.awards_candidate.apps.AwardsCandidateConfig",
-    'media_library',
+    'our_projects',
     'documents',
     "contacts",
     "reports",
     "about_us",
     "feedback_form",
-    "telegram_feed",
-    "search",
 ]
+
+
+
 
 MIDDLEWARE = [
     "django_prometheus.middleware.PrometheusBeforeMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
     'django.middleware.locale.LocaleMiddleware',
+    "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -72,26 +56,22 @@ MIDDLEWARE = [
     "django_prometheus.middleware.PrometheusAfterMiddleware",
 ]
 
-
-
-LANGUAGES = [
-    ('ru', 'Русский'),
-    ('en', 'Лезгинский'),
-]
-
 PARLER_LANGUAGES = {
-    None: (
-        {'code': 'ru'},
-        {'code': 'en'},
-    ),
+    None: [
+        {'code': 'en', 'name': 'English'},
+        {'code': 'ru', 'name': 'Русский'},
+    ],
     'default': {
-        'fallbacks': ['ru'],
+        'fallbacks': ['en'],
         'hide_untranslated': False,
     }
 }
-PARLER_DEFAULT_LANGUAGE_CODE = 'ru'
+
+
+
+
 ROOT_URLCONF = "config.urls"
-LANGUAGE_CODE = "ru"
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -100,7 +80,6 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
-                "django.template.context_processors.i18n",
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
@@ -137,6 +116,8 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
+
 CKEDITOR_UPLOAD_PATH = os.getenv('CKEDITOR_UPLOAD_PATH')
 
 CKEDITOR_5_CONFIGS = {
@@ -152,16 +133,14 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
-
-
 JAZZMIN_SETTINGS = {
     "site_title": "Lezgian Admin",
     "site_header": "Lezgian Website Admin",
     "site_brand": "Lezgian",
     "welcome_sign": "Добро пожаловать!",
     "copyright": "Lezgian Development",
-    "search_model": ["auth.User", "yourapp.YourModel"],
-    "custom_css": "css/admin_custom.css",
+    "search_model": ["auth.User", "yourapp.YourModel"], 
+
     # Темы
     "theme": "cyborg",  # 👈 тёмная тема (или "flatly", "darkly", "lux" и др.)
 
@@ -174,5 +153,3 @@ JAZZMIN_SETTINGS = {
         # Добавь иконки для своих моделей
     },
 }
-
-JAZZMIN_SETTINGS["show_ui_builder"] = True

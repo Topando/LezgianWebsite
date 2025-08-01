@@ -1,11 +1,12 @@
+# admin.py
 from django.contrib import admin
-from django import forms
 from django_ckeditor_5.widgets import CKEditor5Widget
-from parler.admin import TranslatableAdmin
-from parler.forms import TranslatableModelForm
+from django import forms
+
 from about_us.models import About
 
-class AboutAdminForm(TranslatableModelForm):
+
+class AboutAdminForm(forms.ModelForm):
     class Meta:
         model = About
         fields = '__all__'
@@ -14,22 +15,19 @@ class AboutAdminForm(TranslatableModelForm):
         }
 
 @admin.register(About)
-class AboutAdmin(TranslatableAdmin):
+class AboutAdmin(admin.ModelAdmin):
     form = AboutAdminForm
-    list_display    = ('menu_title', 'title', 'order')
+
+    list_display    = ('id', 'menu_title', 'title', 'order')
     list_editable   = ('order',)
     list_per_page   = 20
     ordering        = ('order',)
-    search_fields   = (
-        'translations__menu_title',
-        'translations__title',
-        'translations__body',
-    )
+    search_fields   = ('menu_title', 'title')
     fieldsets = (
         (None, {
-            'fields': ('menu_title', 'title', 'body'),
+            'fields': ('menu_title', 'title', 'order'),
         }),
-        ('Дополнительные параметры', {
-            'fields': ('order',),
+        ('Контент', {
+            'fields': ('body',),
         }),
     )

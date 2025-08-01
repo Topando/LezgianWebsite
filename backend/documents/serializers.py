@@ -1,4 +1,3 @@
-from parler_rest.serializers import TranslatableModelSerializer
 from rest_framework import serializers
 
 from documents.models import Document, TypeDocument
@@ -10,8 +9,7 @@ class DocumentSerializer(serializers.ModelSerializer):
         fields = ("title", "file")
 
 
-class DocumentTypeSerializer(TranslatableModelSerializer):
-    translation_fields = ['title', 'description']
+class DocumentTypeSerializer(serializers.ModelSerializer):
     documents = DocumentSerializer(many=True, read_only=True)
 
     class Meta:

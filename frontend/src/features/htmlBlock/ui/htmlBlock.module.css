@@ -43,7 +43,7 @@
 }
 .containerImg {
     width: 100%;
-    aspect-ratio: 680 / 360;
+    max-height: 7.5rem;
     overflow: hidden;
     border-radius: .33rem;
 
@@ -52,7 +52,7 @@
     align-items: center;
 }
 .containerImg.bigContainerImg {
-    aspect-ratio: 680 / 360;
+    max-height: 15rem;
 }
   
 .containerImg img {

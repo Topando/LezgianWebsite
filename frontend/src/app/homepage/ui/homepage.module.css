@@ -1,41 +1,79 @@
-.headerPage {
-    font-size: var(--s28);
-    font-weight: 700;
+.container {
+    padding-bottom: 12.5rem;
 }
 
-
-.containerText p {
-    font-size: var(--s16);
-}
-.containerText .title {
-    font-size: var(--s24);
-    font-weight: 700;
-
-    margin-bottom: .833rem;
-}
-
-.containerImg {
-    width: 100%;
-    aspect-ratio: 680 / 360;
-    overflow: hidden;
-    border-radius: .33rem;
-
+.infoNews {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: nowrap;
+    padding: 3.91rem 1.3rem 4rem 0;
+}
+.news {
+    background-color: #58BCFF;
+    width: 19.2rem;
+    border-radius: 0.5rem;
+    margin-left: 0.75rem;
 
-    margin-bottom: .833rem;
+    flex-shrink: 0;
 }
 
-  
-.containerImg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.historyContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-left: 0.3rem;
+}
+.historySliderContainer {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+.lezStar {
+    width: 6.04rem;
+    height: 6.04rem;
+
+    margin-right: 1.7rem;
+    padding-top: 0.3rem;
+    flex-shrink: 0;
 }
 
-@media (max-width: 1000px){
-    .containerImg {
-        border-radius: .25rem;
-    }
+.navBlockContainer {
+    padding-left: 8rem;
+    padding-bottom: 4.875rem;
+}
+
+.companyInfoContainer {
+    position: relative;
+    padding-left: 6.875rem;
+
+    padding-top: 6.25rem;
+    padding-bottom: 5.41rem;
+}
+.birdImage {
+    top: 0;
+    left: 0.3rem;
+    position: absolute;
+    width: 16.79rem;
+
+    z-index: -1;
+}
+
+.partnersContainer {
+    margin-bottom: 5.83rem;
+}
+
+.projectsContainer {
+    padding: 0 9.16rem;
+    position: relative;
+}
+.starRed {
+    height: 17.5rem;
+    width: auto;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.leftStarRed {
+    left: -0.2rem;
+}
+.rightStarRed {
+    right: -0.2rem;
 }

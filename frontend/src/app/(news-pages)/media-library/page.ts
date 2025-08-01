@@ -1,1 +1,0 @@
-export { MediaLib as default } from './ui/media-library';

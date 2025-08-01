@@ -2,7 +2,6 @@
 
 import styles from "./reports.module.css";
 
-import { useTranslations } from 'next-intl';
 import { useEffect, useState, useMemo} from "react";
 
 import { ReportsType, reportsGet } from "@/shared/api/endpoints/reports";
@@ -13,7 +12,6 @@ import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 
 
 export function ReportsPage () {
-    const nT = useTranslations('namePages');
     const [data, setData] = useState<ReportsType[]>([]);
     const { setContent } = useRightNav();
 
@@ -44,7 +42,7 @@ export function ReportsPage () {
 
     return(
         <div className={styles.container}>
-            <p className={styles.headerPage}>{nT('reports')}</p>
+            <p className={styles.headerPage}>Отчеты</p>
 
 
             <div className={styles.itemsContent}>

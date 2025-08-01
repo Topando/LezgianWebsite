@@ -2,17 +2,16 @@
 
 import styles from "./docs.module.css";
 
-import { useTranslations } from 'next-intl';
 import { useState, useEffect, useMemo } from 'react';
 import Image from "next/image";
 import { Docs, docs } from "@/shared/api/endpoints/docs";
+import { useRightNav } from '@/shared/context/RightNavContext';
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 import { Separator } from "@/features/separator";
 
 export function DocsPage () {
-    const nT = useTranslations('namePages');
-    const cT = useTranslations('common');
     const [data, setData] = useState<Docs[]>([]);
+    const { setContent } = useRightNav();
 
     useEffect(() => {
         const getData = async () => {
@@ -28,7 +27,7 @@ export function DocsPage () {
     }, []);
 
     const sections = useMemo(() => {
-        const base = [{ id: "0", label: cT('short-regulation') }];
+        const base = [{ id: "0", label: "Устав ФЛНКА" }];
         const dynamic = data.map((item, index) => ({
             id: `${index + 1}`,
             label: item.title,
@@ -36,17 +35,19 @@ export function DocsPage () {
         return [...base, ...dynamic];
     }, [data]);
 
+    useEffect(() => {
+        setContent(<PageSectionsNav sections={sections} />);
+        return () => setContent(null);
+    }, [sections, setContent]);
 
     return (
         <div className={styles.container}>
-            <PageSectionsNav sections={sections}/>
-
-            <p className={styles.heading}>{nT('docs')}</p>
+            <p className={styles.heading}>Документы</p>
             <Separator/>
 
             <div className={styles.articlesCompany} id="0">
-                <h1 className={styles.titleDocs}>{cT('regulation')}</h1>
-                <p className={styles.descText}>{cT('base-docs')}</p>
+                <h1 className={styles.titleDocs}>Устав Федеральной Лезгинской НКА</h1>
+                <p className={styles.descText}>Это основной документ, регламентирующий деятельность организации. В нем зафиксированы цели и задачи ФЛНКА, структура, порядок принятия решений, права и обязанности членов.</p>
             </div>
 
             {data.map((item, ind) => (
@@ -76,7 +77,7 @@ export function DocsPage () {
                                             />
                                             <p className={styles.fileTitle}>{elem.title}</p>
                                         </div>
-                                        <p className={styles.download}>{cT('download')}</p>
+                                        <p className={styles.download}>Скачать</p>
                                     </div>
                                 </a>
                             ))}

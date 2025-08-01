@@ -1,15 +1,7 @@
 from rest_framework import serializers
-from .models import SiteContacts, PhonesContacts
-
-
-class PhoneContactSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PhonesContacts
-        fields = ("phone",)
+from .models import SiteContacts
 
 class SiteContactsSerializer(serializers.ModelSerializer):
-    phones = PhoneContactSerializer(many=True, read_only=True)
-
     class Meta:
         model  = SiteContacts
-        fields = ("email", "address", "working_time", "phones")
+        fields = ("phone", "email", "address", "working_time")

@@ -11,7 +11,6 @@ type Messages = {
     homePage: Record<string, string>;
     nav: Record<string, string>;
     companyInfoBlock: Record<string, string>;
-    namePages: Record<string, string>;
   };
 
 export default function IntlProviderWrapper({ children }: { children: React.ReactNode }) {
@@ -25,7 +24,6 @@ export default function IntlProviderWrapper({ children }: { children: React.Reac
             homePage: (await import(`../../public/locales/${locale}/homePage.json`)).default,
             nav: (await import(`../../public/locales/${locale}/nav.json`)).default,
             companyInfoBlock: (await import(`../../public/locales/${locale}/companyInfoBlock.json`)).default,
-            namePages: (await import(`../../public/locales/${locale}/namePages.json`)).default,
         };
 
       setMessages(messages);

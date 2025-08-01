@@ -1,36 +1,16 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from "react";
-
-import { DetailNewsType, detailNewsGet } from "@/shared/api/endpoints/news";
-import { DetailNewsPage } from "@/widgets/detailNewsPage";
-
+import styles from './project.module.css';
 
 interface Props {
-    slug: string;
+  slug: string;
 }
 
-export default function DetailPage ({ slug }: Props) {
-    const [data, setData] = useState<DetailNewsType>();
+export default function ProjectPage({ slug }: Props) {
 
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const response = await detailNewsGet('projects', slug);
-                setData(response);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
-        getData();
-    }, [slug]);
-
-    return(
-        <div>
-            {data? (
-                <DetailNewsPage data={data}/>
-            ):(<></>)}
-        </div>
-    )
+  return (
+    <div className={styles.container}>
+      {slug}
+    </div>
+  );
 }

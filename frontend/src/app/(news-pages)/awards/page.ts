@@ -1,1 +1,0 @@
-export { AwardsPage as default } from './ui/awards';

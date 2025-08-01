@@ -1,1 +1,0 @@
-export { LanguagePage as default } from './ui/language';

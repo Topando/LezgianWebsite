@@ -1,61 +1,48 @@
 'use client';
 
 import styles from './companyInfo.module.css';
-import { useState, useEffect } from 'react';
-import { AboutType, aboutGet } from "@/shared/api/endpoints/about";
+import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { parseOnlyText } from '@/features/parseAlbumImg/parseAlbumImg';
-import Link from 'next/link';
 
+interface DataType {
+  title: string;
+  description: string;
+}
 
 export function CompanyInfo() {
+  const t = useTranslations('companyInfoBlock');
   const [active, setActive] = useState(0);
-  const [data, setData] = useState<AboutType[]>([]);
-
-  useEffect(() => {
-      const getData = async () => {
-        try {
-          const response = await aboutGet();
-          setData(response);
-        } catch (err) {
-          console.log(err);
-        }
-      };
-  
-      getData();
-  }, []);
+  const data: DataType[] = t.raw('data');
 
   return (
     <div className={styles.container}>
       <div className={styles.nav}>
-        {data.slice(0, 4).map((item, ind) => (
+        {data.map((item, ind) => (
           <motion.button
             key={ind}
             onClick={() => setActive(ind)}
             className={`${styles.elem} ${ind === active ? styles.active : ''}`}
             whileTap={{ scale: 1.03 }}
-            animate={{ backgroundColor: ind === active ? '#F8F8F8' : '#ffffff' }}
+            animate={{ backgroundColor: ind === active ? '#ffffff' : '#E5E5E5' }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           >
-            <p>{item.menu_title}</p>
+            <p>{item.title}</p>
           </motion.button>
         ))}
       </div>
 
       <div>
           <div className={styles.textBlock}> 
-            <div className={styles.text}>
-                <div className={styles.separator}></div>
-                {data.length > 0 && data[active] ? (
-                  <p className={styles.description}>{parseOnlyText(data[active].body)}</p>
-                ) : (
-                  <p></p>
-                )}
+            
+            <div className={styles.scrollBar}>
+                <div className={styles.square}></div>
+                <div className={styles.line}></div>
             </div>
-
-            <Link href="/about" className={styles.buttonMore}>
-                Читать все
-            </Link>
+            <div className={styles.text}>
+                <p className={styles.title}>{data[active].title}</p>
+                <p className={styles.description}>{data[active].description}</p>
+            </div>
 
           </div>
       </div>

@@ -9,7 +9,6 @@ type Messages = {
   homePage: Record<string, string>;
   nav: Record<string, string>;
   companyInfoBlock: Record<string, string>;
-  namePages: Record<string, string>;
 };
 
 export default getRequestConfig(async () => {
@@ -23,7 +22,6 @@ export default getRequestConfig(async () => {
     homePage: (await import(`../../public/locales/${typedLocale}/homePage.json`)).default,
     nav: (await import(`../../public/locales/${typedLocale}/nav.json`)).default,
     companyInfoBlock: (await import(`../../public/locales/${typedLocale}/companyInfoBlock.json`)).default,
-    namePages: (await import(`../../public/locales/${typedLocale}/namePages.json`)).default,
   };
 
   return {

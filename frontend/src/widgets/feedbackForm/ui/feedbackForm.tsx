@@ -2,20 +2,11 @@
 
 import styles from "./feedbackForm.module.css";
 
-import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import Inputmask from 'inputmask';
-import { sendFeedback } from "@/shared/api/endpoints/feedback-form";
+// import { sendFeedback } from "@/shared/api/endpoints/feedback-form";
 
-interface Props {
-  title?: string;
-  otherComment?: string;
-}
-
-export function FeedbackForm({title = 'Обратная связь', otherComment}: Props) {
-  const cT = useTranslations('common');
-  title = title === 'Обратная связь' ? cT('feedback'): title;
-
+export function FeedbackForm() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -45,31 +36,28 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
       setError("Необходимо согласиться с обработкой персональных данных.");
       return;
     }
-    if (otherComment) {
-      formData.comment = `Запись на мероприятие:\n${otherComment}\nКомментарий:\n${formData.comment}`;
-    }
+    console.log(formData.phone);
 
-    try {
-      const response = await sendFeedback(
-        formData.name,
-        formData.phone,
-        formData.email,
-        formData.comment
-      );
-      if (response) {
-        setIsSubmitted(true);
-      } else {
-        setError("Не удалось отправить заявку. Попробуйте снова.");
-      }
-    } catch (err) {
-      setError("Произошла ошибка. Попробуйте позже.");
-      console.error(err);
-    }
+    // try {
+    //   const response = await sendFeedback(
+    //     formData.phone,
+    //     formData.name,
+    //     formData.comment
+    //   );
+    //   if (response) {
+    //     setIsSubmitted(true);
+    //   } else {
+    //     setError("Не удалось отправить заявку. Попробуйте снова.");
+    //   }
+    // } catch (err) {
+    //   setError("Произошла ошибка. Попробуйте позже.");
+    //   console.error(err);
+    // }
   };
 
   return (
     <div className={styles.container}>
-          <p className={styles.title}>{title}</p>
+          <p className={styles.title}>Обратная связь</p>
           {error && <p className={styles.errorMessage}>{error}</p>}
           {isSubmitted ? (
             <div className={styles.successMessage}>
@@ -87,7 +75,7 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder={cT('name')}
+                  placeholder="Имя"
                 />
               </div>
 
@@ -107,12 +95,12 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
                   name="comment"
                   value={formData.comment}
                   onChange={handleChange}
-                  placeholder={cT('message')}
+                  placeholder="Сообщение"
                 />
               </div>
 
               <div className={styles.formElem}>
-                <p className={styles.placeholderPhone}>{cT('phone-num')}</p>
+                <p className={styles.placeholderPhone}>Номер телефона</p>
                 <PhoneInput 
                   value={formData.phone} 
                   onChange={(phone) => setFormData(prev => ({...prev, phone}))} 
@@ -130,13 +118,13 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
                 className={styles.checkBox}
               />
               <label htmlFor="check" className={styles.labelCheckBox}>
-                 {cT('conf-check')}
+                «Я согласен(а) с политикой обработки персональных данных»
               </label>
             </div>
 
             <div className={styles.buttonSendContainer}>
               <button type="submit" className={styles.buttonSend}>
-                {cT('send')}
+                Отправить
               </button>
             </div>
           </form>
@@ -163,12 +151,14 @@ function PhoneInput({ value, onChange }: {
         autoUnmask: true,
         placeholder: '_',
         onincomplete: () => {
+          // Обработка неполного ввода
           onChange('');
         }
       });
       
       imRef.current.mask(ref.current);
 
+      // Инициализация значения
       if (value) {
         ref.current.value = value;
       }
@@ -196,6 +186,7 @@ function PhoneInput({ value, onChange }: {
       ref={ref}
       type="tel"
       inputMode="tel"
+      pattern="[0-9]*"
       value={inputValue}
       onChange={handleChange}
       placeholder="+7"

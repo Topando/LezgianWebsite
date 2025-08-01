@@ -2,12 +2,10 @@
 from django.contrib import admin
 from django_ckeditor_5.widgets import CKEditor5Widget
 from django import forms
-from parler.admin import TranslatableAdmin
-from parler.forms import TranslatableModelForm
 
 from .models import Congresses
 
-class CongressesAdminForm(TranslatableModelForm):
+class CongressesAdminForm(forms.ModelForm):
     class Meta:
         model = Congresses
         fields = '__all__'
@@ -16,7 +14,7 @@ class CongressesAdminForm(TranslatableModelForm):
         }
 
 @admin.register(Congresses)
-class CongressesAdmin(TranslatableAdmin):
+class CongressesAdmin(admin.ModelAdmin):
     form = CongressesAdminForm
 
     list_display    = ('id', 'menu_title', 'title', 'order')
@@ -26,9 +24,9 @@ class CongressesAdmin(TranslatableAdmin):
     search_fields   = ('menu_title', 'title')
     fieldsets = (
         (None, {
-            'fields': ('menu_title', 'title', 'body'),
+            'fields': ('menu_title', 'title', 'order'),
         }),
         ('Контент', {
-            'fields': ('order',),
+            'fields': ('body',),
         }),
     )

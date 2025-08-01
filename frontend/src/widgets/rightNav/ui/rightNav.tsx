@@ -3,7 +3,6 @@
 import { useContext } from 'react';
 import styles from './rightNav.module.css';
 import { RightNavContext } from '@/shared/context/RightNavContext';
-import { TelegramNews } from '@/widgets/telegramNews';
 
 export function RightNav() {
   const { content } = useContext(RightNavContext);
@@ -21,5 +20,9 @@ export function RightNav() {
 }
 
 function DefaultTopContent() {
-  return <></>;
+  return <div></div>;
+}
+
+function TelegramNews() {
+  return <div></div>;
 }

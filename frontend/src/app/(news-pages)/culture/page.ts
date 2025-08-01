@@ -1,1 +1,0 @@
-export { CulturePage as default } from './ui/culture';
