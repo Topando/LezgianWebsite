@@ -1,50 +1,30 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import { useTranslations } from 'next-intl';
 
-/*
-Обычные страницы
-{ match: /^\/about$/, title: 'О нас' }
-
-Группы страниц или динамические маршруты
-{ match: /^\/docs/, title: 'Документы' }
-Подходит для:
-- /docs
-- /docs/123
-- /docs/anything
-
-Маршруты с вложенностью
-{ match: /^\/admin\/users/, title: 'Пользователи (админка)' }
-Покроет:
-- /admin/users
-- /admin/users/123
-*/
-
-const PATH_TITLES: { match: RegExp; title: string }[] = [
-    { match: /^\/(\/.*)?$/, title: 'Главная' },
-    { match: /^\/about(\/.*)?$/, title: 'О нас' },
-    { match: /^\/docs(\/.*)?$/, title: 'Документы' },
-    { match: /^\/projects(\/.*)?$/, title: 'Проекты' },
-    { match: /^\/congresses(\/.*)?$/, title: 'Съезды' },
-    { match: /^\/contacts(\/.*)?$/, title: 'Контакты' },
-    { match: /^\/reports(\/.*)?$/, title: 'Отчеты' },
+const PATH_TITLES: { match: RegExp; key: string }[] = [
+    { match: /^\/(\/.*)?$/, key: 'main' },
+    { match: /^\/about(\/.*)?$/, key: 'about-us' },
+    { match: /^\/docs(\/.*)?$/, key: 'docs' },
+    { match: /^\/projects(\/.*)?$/, key: 'projects' },
+    { match: /^\/congresses(\/.*)?$/, key: 'congresses' },
+    { match: /^\/contacts(\/.*)?$/, key: 'contacts' },
+    { match: /^\/reports(\/.*)?$/, key: 'reports' },
 ];
 
-const getTitleFromPath = (path: string): string => {
+const getKeyFromPath = (path: string): string => {
     const match = PATH_TITLES.find((route) => route.match.test(path));
-    return match?.title ?? 'Главная';
+    return match?.key ?? 'main';
 };
 
 export const PageTitle = () => {
     const pathname = usePathname();
-    console.log(pathname);
-    const title = getTitleFromPath(pathname);
-    console.log(title);
+    const t = useTranslations('nav.links'); // Используем ту же группу переводов
+    const key = getKeyFromPath(pathname);
 
-    return <>{title}</>;
+    return <>{t(key)}</>;
 };
-  
 
 export function useFirstPathSegment(): string {
     const path = usePathname();

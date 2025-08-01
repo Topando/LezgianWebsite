@@ -3,10 +3,16 @@
 
     display: flex;
     flex-direction: column;
-    gap: 0.833rem;
 
     position: sticky;
     top: 1rem;
+}
+.topBlock {
+    margin-bottom: .833rem;
+}
+
+.topBlock:empty {
+    margin-bottom: 0;
 }
 
 .topBlock,
@@ -22,6 +28,9 @@
         max-width: calc(100vw - 0.625rem*2); 
         overflow-x: hidden; 
 
-        gap: 0;
+    }
+
+    .topBlock {
+        margin-bottom: .833rem;
     }
 }

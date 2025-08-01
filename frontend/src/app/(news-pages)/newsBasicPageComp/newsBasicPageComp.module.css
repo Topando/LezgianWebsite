@@ -1,0 +1,107 @@
+.header {
+    font-size: var(--s28);
+    font-weight: 700;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    row-gap: 1rem;
+    column-gap: .833rem;
+}
+
+.newsElemContainer {
+    grid-column: 1 / -1; 
+    width: 100%;
+}
+
+.imageContainer {
+    width: 100%;
+    border-radius: 0.33rem;
+    overflow: hidden;
+    aspect-ratio: 680 / 360;
+    position: relative;
+}
+
+.imageContainer :global(img) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
+
+.newsName {
+    font-size: var(--s20);
+    font-weight: 700;
+    margin: .83rem 0 .5rem 0;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
+
+.newsAnonse {
+    font-size: var(--s16);
+    margin-bottom: .66rem;
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+    line-height: 160%;
+    letter-spacing: 0%;
+}
+
+.readMore {
+    display: block;
+    font-size: var(--s14);
+    font-weight: 600;
+    color: var(--light-blue);
+}
+.separatorMobile{
+    display: none;
+}
+
+
+@media (max-width: 1000px){
+    .separatorMobile{
+        display: block;
+    }
+    .container .separatorMobile::first-line {
+        display: none;
+    }
+    .header {
+        font-size: var(--s20);
+        font-weight: 500;
+    }
+    .container {
+        grid-template-columns: 1fr;
+        row-gap: 0;
+        column-gap: 0;
+    }
+    .imageContainer{
+        aspect-ratio: 680 / 360;
+    }
+    .newsName{
+        font-weight: 600;
+        font-size: var(--s16);
+        margin: .833rem 0 .5rem;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+    } 
+    .newsAnonse{
+        font-size: var(--s14);
+        display: block;
+        overflow: visible;
+        -webkit-line-clamp: unset;
+        margin-bottom: .66rem;
+    }
+    .readMore{
+        display: block;
+        font-size: var(--s14);
+        font-weight: 600;
+        color: var(--light-blue);
+    }
+}

@@ -2,21 +2,24 @@
 
 import styles from './projects.module.css';
 
+import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ProjectsType, projectsGet } from '@/shared/api/endpoints/projects';
+import { NewsType, newsGet } from '@/shared/api/endpoints/news';
 import { replaceLocalhostWithBackend } from '@/features/makeRelativePath';
 import { Separator } from '@/features/separator';
 
 export function ProjectsPage() {
-  const [data, setData] = useState<ProjectsType[]>([]);
+  const nT = useTranslations('namePages');
+  const cT = useTranslations('common');
+  const [data, setData] = useState<NewsType[]>([]);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await projectsGet();
+        const response = await newsGet('projects');
         setData(response);
       } catch (err) {
         console.log(err);
@@ -28,7 +31,7 @@ export function ProjectsPage() {
 
   return (
     <div>
-        <p className={styles.header}>Проекты</p>
+        <p className={styles.header}>{nT('projects')}</p>
         <Separator/>
 
         <div className={styles.container}>
@@ -58,7 +61,7 @@ export function ProjectsPage() {
                     <div className={styles.textContainer}>
                         <p className={styles.newsName}>{elem.name}</p>
                         <p className={styles.newsAnonse}>{elem.announcement}</p>
-                        <p className={styles.readMore}>Читать полностью</p>
+                        <p className={styles.readMore}>{cT('read-more')}</p>
                     </div>
                     </Link>
                 </div>

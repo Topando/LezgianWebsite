@@ -1,5 +1,5 @@
-import ProjectPage from './ui/project';
+import DetailPage from './ui/project';
 
 export default function Page({ params }: { params: { slug: string } }) {
-  return <ProjectPage slug={params.slug} />;
+  return <DetailPage slug={params.slug} />;
 }

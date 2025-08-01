@@ -1,12 +1,22 @@
 from django.db import models
+from parler.models import TranslatedFields, TranslatableModel
 
-class TypeDocument(models.Model):
-    title = models.CharField(max_length=255, verbose_name="Название")
-    description = models.TextField(null=True, blank=True, verbose_name="Описание")
+
+class TypeDocument(TranslatableModel):
+    translations = TranslatedFields(
+        title=models.CharField(max_length=255, verbose_name="Название"),
+        description=models.TextField(verbose_name="Описание"),
+    )
+
     order = models.PositiveSmallIntegerField(default=10, verbose_name="Сортировка")
     class Meta:
         verbose_name = "Тип документов"
         verbose_name_plural = "Типы документов"
+        ordering = ("order",)
+
+    def __str__(self) -> str:
+        return self.safe_translation_getter("title", any_language=True) or "—"
+
 
 class Document(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название")
@@ -17,3 +27,5 @@ class Document(models.Model):
         verbose_name = "Документы"
         verbose_name_plural = verbose_name
 
+    def __str__(self) -> str:
+        return self.title

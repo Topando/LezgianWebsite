@@ -20,7 +20,7 @@
     width: 100%;
     border-radius: 0.33rem;
     overflow: hidden;
-    height: 8.875rem;
+    aspect-ratio: 680 / 360;
     position: relative;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .bigElem .imageContainer {
-    height: 15rem;
+    aspect-ratio: 680 / 360;
 }
 
 .newsName {
@@ -108,7 +108,7 @@
     }
     .imageContainer,
     .bigElem .imageContainer{
-        height: 11.66rem;
+        aspect-ratio: 680 / 360;
     }
     .newsName,
     .bigElem .newsName{
