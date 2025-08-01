@@ -20,14 +20,16 @@ export function DetailNewsPage ({data}: Props) {
             <p className={styles.title}>{data.name}</p>
             <Separator/>
 
-            <div className={styles.imageContainer}>
-                <Image
-                    src={replaceLocalhostWithBackend(data.image)}
-                    width={486}
-                    height={400}
-                    alt={data.name}
-                />
-            </div>
+            {data.image? (
+                <div className={styles.imageContainer}>
+                    <Image
+                        src={replaceLocalhostWithBackend(data.image)}
+                        width={486}
+                        height={400}
+                        alt={data.name}
+                    />
+                </div>
+            ):(<></>)}
 
             <div className={styles.anounseContainer}>
                 <p className={styles.name}>{data.name}</p>

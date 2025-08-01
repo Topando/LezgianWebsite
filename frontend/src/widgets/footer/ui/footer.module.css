@@ -12,6 +12,9 @@
 
     padding-bottom: 3.33rem;
 }
+.mainContent p {
+    color: white;
+}
 .block {
     max-width: 33%;
 }

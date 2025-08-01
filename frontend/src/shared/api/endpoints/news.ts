@@ -5,17 +5,17 @@ export interface NewsType {
     name: string;
     slug: string;
     announcement: string;
-    image: string;
+    image?: string;
     date?: Date;
     place?: string;
 }
 export interface DetailNewsType {
     id: number;
     name: string;
-    slug: string;
+    slug?: string;
     announcement: string;
     description: string;
-    image: string;
+    image?: string;
     date?: Date;
     place?: string;
 }

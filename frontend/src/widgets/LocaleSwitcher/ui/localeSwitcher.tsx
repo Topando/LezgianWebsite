@@ -18,8 +18,12 @@ export function LocaleSwitcher({ theme = 'white' }: Props) {
   const currentLocale = useSelector((state: RootState) => state.locale.locale);
 
   const changeLanguage = (locale: string) => {
+    if (locale === currentLocale) return;
+
     dispatch(setLocale(locale));
     Cookies.set('NEXT_LOCALE', locale, { expires: 365, path: '/' });
+
+    window.location.reload();
   };
 
   return (

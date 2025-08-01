@@ -1,94 +1,72 @@
 .container {
-    border-radius: 1.25rem;
-    border: 0.2rem solid var(--black);
+    border-radius: 1rem;
+    padding: 1.33rem .66rem;
 
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
+    gap: 1.66rem;
+
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.05),0px 4px 8px 0px rgba(0, 0, 0, 0.02);
+
+    height: 16.66rem;
 }
 
 .nav {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
+    gap: .5rem;
 }
 .elem {
-    border: 0.2rem solid var(--black);
-    border-left: none;
-    border-bottom: none;
-    border-radius: 0.03rem;
-
     font-size: var(--s16);
-    font-weight: 700;
-    height: 5.83rem;
+    text-align: left;
+    
     width: 10.83rem;
 
     padding: 1rem;
-
-    background-color: #E5E5E5;
-}
-.nav .elem:first-child {
-    border-top: none;
-}
-.nav .elem:last-child {
-    border-bottom: 0;
+    border-radius: .33rem;
+    padding: .33rem .66rem;
 }
 .active {
     background-color: var(--white);
     border-right: none;
 }
 
+.separator {
+    border: .8px solid rgb(248, 248, 248);
+    width: 100%;
+    margin-bottom: .1rem;
+}
+
 .textBlock {
-    padding: 1.291rem 2rem 1.291rem 1rem;
     display: flex;
+    flex-direction: column;
     height: 100%;
 }
 .text {
+    flex: 1;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-.title {
-    text-align: center;
-    font-weight: 700;
-    font-size: var(--s24);
-
-    margin-bottom: 1.83rem;
-    max-width: 80%;
+    justify-content: flex-start;
 }
 .description {
     font-size: var(--s16);
-    font-weight: 700;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
 }
+.buttonMore {
+    width: 100%;
+    padding: .5rem 1.33rem;
 
-.scrollBar {
-    align-self: flex-end;
-    position: relative;
-    padding-bottom: 1.54rem;
-    height: 80%;
-    width: 2rem;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: .33rem;
 
-    margin-right: 1.5rem;
-}
-
-.square {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg); /* Центрируем + поворачиваем */
-    width: 0.7rem;
-    height: 0.7rem;
-    background-color: var(--black);
-    border-radius: 0.06rem;
-}
-
-.line {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0.2rem;
-    height: 100%;
-    background-color: var(--black);
-
-    border-radius: 0.03rem;
+    font-size: var(--s14);
+    text-align: center;
+    flex-shrink: 0;
 }
