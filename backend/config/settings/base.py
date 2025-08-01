@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "about_us",
     "feedback_form",
     "telegram_feed",
+    "search",
 ]
 
 MIDDLEWARE = [

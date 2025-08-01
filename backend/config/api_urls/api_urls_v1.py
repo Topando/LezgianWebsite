@@ -17,5 +17,6 @@ urlpatterns = [
     path('about/', include('about_us.urls')),
     path('media-library/', include('media_library.urls')),
     path('feedback-form/', include('feedback_form.urls')),
-    path('telegram-feed/', include('telegram_feed.urls'))
+    path('telegram-feed/', include('telegram_feed.urls')),
+    path('search/', include('search.urls'))
 ]

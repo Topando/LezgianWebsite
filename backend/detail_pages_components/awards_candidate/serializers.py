@@ -12,10 +12,10 @@ class AwardCandidateDetailSerializer(serializers.ModelSerializer):
     candidates = CandidateSerializer(many=True, read_only=True)
     class Meta:
         model = CandidateAwards
-        fields = ("title", "description", "candidates", "photo")
+        fields = ("name", "description", "candidates", "image")
 
 
 class AwardCandidateSerializer(serializers.ModelSerializer):
     class Meta:
         model = CandidateAwards
-        fields = ("title", "description", "photo", "slug")
+        fields = ("name", "description", "image", "slug")
