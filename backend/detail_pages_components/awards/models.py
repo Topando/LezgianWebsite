@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
+from django.utils.text import slugify
+from slugify import slugify as ascii_slugify
 
 from search.handler import SearchableMixin
 
@@ -23,10 +25,23 @@ class Award(SearchableMixin, TranslatableModel):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            name = self.safe_translation_getter('name', any_language=True)
-            self.slug = slugify(name)
-        super().save(*args, **kwargs)
+            name = self.safe_translation_getter('name') or ''
+            base = ascii_slugify(name) or 'item'
 
+            max_len = self._meta.get_field('slug').max_length or 50
+            slug = base[:max_len]
+            i = 2
+            qs = type(self).objects.all()
+            if self.pk:
+                qs = qs.exclude(pk=self.pk)
+            while qs.filter(slug=slug).exists():
+                suffix = f'-{i}'
+                slug = f"{base[:max_len - len(suffix)]}{suffix}"
+                i += 1
+
+            self.slug = slug
+
+        super().save(*args, **kwargs)
     def __str__(self):
         return self.safe_translation_getter('name', any_language=True)
 

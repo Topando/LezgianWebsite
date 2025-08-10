@@ -3,6 +3,7 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
 from django.utils.text import slugify
+from slugify import slugify as ascii_slugify
 
 
 
@@ -18,6 +19,23 @@ class CandidateAwards(TranslatableModel):
         verbose_name = "Премия"
         verbose_name_plural = "Премия"
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            name = self.safe_translation_getter('name') or ''
+            base = ascii_slugify(name) or 'item'
+
+            max_len = self._meta.get_field('slug').max_length or 50
+            slug = base[:max_len]
+            i = 2
+            qs = type(self).objects.all()
+            if self.pk:
+                qs = qs.exclude(pk=self.pk)
+            while qs.filter(slug=slug).exists():
+                suffix = f'-{i}'
+                slug = f"{base[:max_len - len(suffix)]}{suffix}"
+                i += 1
+
+            self.slug = slug
 
 
     def __str__(self):
