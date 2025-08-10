@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
 
@@ -38,6 +37,8 @@ class History(SearchableMixin, TranslatableModel):
                 i += 1
 
             self.slug = slug
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.safe_translation_getter('name', any_language=True)
