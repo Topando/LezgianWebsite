@@ -160,7 +160,6 @@ export function Header() {
     setExpandedGroups((prev) => ({ ...prev, [model]: !prev[model] }));
   };
 
-  // 1) Дедуп по канонической модели + slug
   const dedupedResults = useMemo(() => {
     const seen = new Set<string>();
     return (results ?? []).filter((it) => {
@@ -171,7 +170,6 @@ export function Header() {
     });
   }, [results]);
 
-  // 2) Жёсткая фильтрация (без "return true" по умолчанию)
   const filteredResults = useMemo(() => {
     return dedupedResults.filter((item) => {
       const model = canonicalModel(item.model);

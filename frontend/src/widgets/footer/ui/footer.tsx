@@ -8,7 +8,6 @@ import { useState, useEffect } from 'react';
 import {useTranslations} from 'next-intl';
 
 import { Contacts, contacts } from '@/shared/api/endpoints/contacts';
-import { LocaleSwitcher } from '@/widgets/LocaleSwitcher';
 
 export function Footer() {
     const cmT = useTranslations('common');
@@ -51,11 +50,11 @@ export function Footer() {
                         <p className={styles.title}>{cmT('soc')}</p>
 
                         <div className={styles.content}>
-                            <a href='https://m.vk.com/flnka?ysclid=mdw0udbkzv817370940' target="_blank" rel="noopener noreferrer" className={styles.networksWrapper}>
-                                <div className={styles.networkElem}>
+                            <div className={styles.networksWrapper}>
+                                <a href='https://m.vk.com/flnka?ysclid=mdw0udbkzv817370940' target="_blank" rel="noopener noreferrer" className={styles.networkElem}>
                                     <Image className={styles.imageNetwork} src={'/images/linksNetwork/vk.svg'} width={40} height={40} alt='Группа vk'/>
                                     <a href="">Вконтакте</a>
-                                </div>
+                                </a>
                                 <a href='https://t.me/flnka' target="_blank" rel="noopener noreferrer" className={styles.networkElem}>
                                     <Image className={styles.imageNetwork} src={'/images/linksNetwork/telegram.svg'} width={40} height={40} alt='telegram'/>
                                     <a href="">Телеграм</a>
@@ -64,7 +63,7 @@ export function Footer() {
                                     <Image className={styles.imageNetwork} src={'/images/linksNetwork/rutube.svg'} width={40} height={40} alt='rutube'/>
                                     <a href="">Рутюб</a>
                                 </a>
-                            </a>
+                            </div>
 
                         </div>
                     </div>
