@@ -3,7 +3,7 @@ import apiClient from "../base";
 export interface TelegramNewsType {
     text: string;
     photo_url: string;
-    url?: string;
+    post_url: string;
 }
 
 export const TelegramNewsGet = async() => {
