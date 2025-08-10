@@ -7,4 +7,4 @@ class CongressesSerializer(TranslatableModelSerializer):
     translation_fields = ['menu_title', 'title', 'body']
     class Meta:
         model = Congresses
-        fields = '__all__'
+        fields = ("menu_title", "title", "body", "order")
