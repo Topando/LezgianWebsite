@@ -57,7 +57,7 @@
 }
 
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .containerNews {
         overflow-x: auto;
         overflow-y: hidden;

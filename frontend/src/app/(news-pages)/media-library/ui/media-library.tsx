@@ -9,16 +9,17 @@ import { useState, useEffect } from 'react';
 import { MediaLibGet, MediaLibType } from '@/shared/api/endpoints/media-library';
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 import { SectionsMainPage } from '@/shared/sectionsMainPage';
-import { GlobalLightbox } from '@/shared/globalLightbox';
 import { replaceLocalhostWithBackend } from '@/features/makeRelativePath';
 import { Separator } from '@/features/separator';
 import { Pagination } from '@/widgets/pagination';
+import { useGlobalLightbox } from '@/shared/context/GlobalLightboxContext';
 
 export function MediaLib() {
     const nT = useTranslations('namePages');
 
+    const { openLightbox, registerSlides } = useGlobalLightbox();
+
     const [data, setData] = useState<MediaLibType[]>([]);
-    const [slides, setSlides] = useState<{ src: string }[]>([]);
     const [pageData, setPageData] = useState<MediaLibType[]>([]);
 
     useEffect(() => {
@@ -35,35 +36,46 @@ export function MediaLib() {
     }, []);
 
     useEffect(() => {
-        if (data.length > 0) {
-            setSlides(data.map(img => ({ src: img.image })));
-        }
-        data.map(img => (console.log(img.image)));
-    }, [data]);
+        if (!data || data.length === 0) return;
+
+        const mappedSlides = data.map(img => {
+        const url = img.image;
+        return { src: url.split("?")[0] };
+    });
+
+        registerSlides(mappedSlides);
+    }, [data, registerSlides]);
 
     return (
         <div>
             <PageSectionsNav sections={SectionsMainPage()}/>
 
             <p className={styles.headerPage}>{nT('media')}</p>
+            <Separator/>
 
             <div className={styles.galleryContainer}>
-                {pageData.map((img, ind) => (
+                {pageData.map((img, ind) => {
+                const fullSrc = replaceLocalhostWithBackend(img.image).split("?")[0];
+
+                return (
                     <div
-                        key={ind}
-                        className={styles.imgContainer}
-                    >
+                    key={ind}
+                    className={`${styles.imgContainer} ${
+                        (ind) % 7 === 0 ? styles.bigElem : ''
+                        }`}
+                    onClick={() => openLightbox(ind)}
+                        >
                         <Image
-                            src={replaceLocalhostWithBackend(img.image)}
+                            src={fullSrc}
                             alt="Фото из медиатеки"
                             width={680}
                             height={680}
+                            priority={ind < 3}
                         />
                     </div>
-                ))}
+                );
+                })}
             </div>
-
-            <GlobalLightbox slides={slides} galleryId="gallery" />
 
             <Separator/>
             <Pagination data={data} countOnePage={14} onPageChange={setPageData} />

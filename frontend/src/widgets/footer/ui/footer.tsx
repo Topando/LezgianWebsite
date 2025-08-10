@@ -12,6 +12,8 @@ import { LocaleSwitcher } from '@/widgets/LocaleSwitcher';
 
 export function Footer() {
     const cmT = useTranslations('common');
+    const navT = useTranslations('nav.links');
+
     const [data, setData] = useState<Contacts|null>(null);
 
     useEffect(() => {
@@ -34,23 +36,58 @@ export function Footer() {
                 <div className={`${styles.block} ${styles.navBlock}`}>
                     <p className={styles.title}>Навигация</p>
                     <div className={styles.content}>
-                        <Link href='/'>Главная</Link>
-                        <Link href=''>О нас</Link>
-                        <Link href=''>Документы</Link>
-                        <Link href=''>Проекты</Link>
-                        <Link href=''>Съезды</Link>
-                        <Link href=''>Контакты</Link>
-                        <Link href=''>Отчеты</Link>
+                        <Link href='/'>{navT('main')}</Link>
+                        <Link href='/about/'>{navT('about-us')}</Link>
+                        <Link href='/docs/'>{navT('docs')}</Link>
+                        <Link href='/projects/'>{navT('projects')}</Link>
+                        <Link href='/congresses/'>{navT('congresses')}</Link>
+                        <Link href='/contacts/'>{navT('contacts')}</Link>
+                        <Link href='/reports/'>{navT('reports')}</Link>
                     </div>
+
                 </div>
                 <div className={`${styles.block} ${styles.addressBlock}`}>
-                    <p className={styles.title}>Адрес</p>
-                    <div className={styles.content}>
-                        <p>Москва, Россия</p>
-                        <a href={`mailto:${data?.email}`}>{data?.email}</a>
-                        <p>+7 (495) 123-45-67</p>
+                    <div>
+                        <p className={styles.title}>{cmT('soc')}</p>
 
-                        <div>
+                        <div className={styles.content}>
+                            <a href='https://m.vk.com/flnka?ysclid=mdw0udbkzv817370940' target="_blank" rel="noopener noreferrer" className={styles.networksWrapper}>
+                                <div className={styles.networkElem}>
+                                    <Image className={styles.imageNetwork} src={'/images/linksNetwork/vk.svg'} width={40} height={40} alt='Группа vk'/>
+                                    <a href="">Вконтакте</a>
+                                </div>
+                                <a href='https://t.me/flnka' target="_blank" rel="noopener noreferrer" className={styles.networkElem}>
+                                    <Image className={styles.imageNetwork} src={'/images/linksNetwork/telegram.svg'} width={40} height={40} alt='telegram'/>
+                                    <a href="">Телеграм</a>
+                                </a>
+                                <a href='https://rutube.ru/channel/24706323/?ysclid=mdw0vhyitu469300817' target="_blank" rel="noopener noreferrer" className={styles.networkElem}>
+                                    <Image className={styles.imageNetwork} src={'/images/linksNetwork/rutube.svg'} width={40} height={40} alt='rutube'/>
+                                    <a href="">Рутюб</a>
+                                </a>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div className={styles.contacts}>
+                        <p className={styles.title}>{cmT('contacts')}</p>
+
+                        <a href={`mailto:${data?.email}`}>{data?.email}</a>
+                        {data?.phones.map((phone, ind) => (
+                            <a href={`tel:${phone.phone}`} key={ind}>{phone.phone}</a>
+                        ))}
+                        
+                    </div>
+
+                    
+                </div>
+
+                <div>
+                    <p className={styles.title}>{cmT('address')}</p>
+                    <div className={styles.content}>
+                        <p>{cmT('moscow')}</p>
+
+                        <div className={styles.logoContainer}>
                             <Image 
                                 className={styles.logo}
                                 src={'/images/logo.png'}
@@ -63,34 +100,9 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className={`${styles.block} ${styles.socBlock}`}>
-                    <p className={styles.title}>Социальные сети</p>
-
-                    <div className={styles.content}>
-                        <div className={styles.networksWrapper}>
-                            <div className={styles.networkElem}>
-                                <Image className={styles.imageNetwork} src={'/images/linksNetwork/vk.svg'} width={40} height={40} alt='Группа vk'/>
-                                <a href="">Вконтакте</a>
-                            </div>
-                            <div className={styles.networkElem}>
-                                <Image className={styles.imageNetwork} src={'/images/linksNetwork/telegram.svg'} width={40} height={40} alt='telegram'/>
-                                <a href="">Телеграм</a>
-                            </div>
-                            <div className={styles.networkElem}>
-                                <Image className={styles.imageNetwork} src={'/images/linksNetwork/rutube.svg'} width={40} height={40} alt='rutube'/>
-                                <a href="">Рутюб</a>
-                            </div>
-                        </div>
-
-                        <div className={styles.localeSwitch}>
-                            <LocaleSwitcher theme='black'/>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
-            <p className={styles.conf}>© 2025 ФЛНКА. Все права защищены. Политика конфиденциальности</p>
+            <p className={styles.conf}>{cmT('conf')}</p>
         </div>
     )
 }

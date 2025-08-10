@@ -5,6 +5,7 @@ import styles from './homepage.module.css';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 import { SectionsMainPage } from '@/shared/sectionsMainPage';
@@ -18,6 +19,7 @@ import { replaceLocalhostWithBackend } from '@/features/makeRelativePath';
 
 export function HomepageContent () {
   const [data, setData] = useState<NewsType[]>([]);
+  const cmT = useTranslations('common');
 
   useEffect(() => {
       const getData = async () => {
@@ -36,7 +38,7 @@ export function HomepageContent () {
         <div>
           <PageSectionsNav sections={SectionsMainPage()}/>
 
-          <p className={styles.headerPage}>ФЕДЕРАЛЬНАЯ ЛЕЗГИНСКАЯ НАЦИОНАЛЬНО-КУЛЬТУРНАЯ  АВТОНОМИЯ</p>
+          <p className={styles.headerPage}>{cmT('full-name')}</p>
           <Separator/>
 
           <CompanyInfo/>

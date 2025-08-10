@@ -34,7 +34,7 @@
     object-fit: cover;
 }
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .containerImg {
         border-radius: .25rem;
     }

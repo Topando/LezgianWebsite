@@ -9,6 +9,7 @@ export interface AwardsType {
 }
 
 export interface CandidateType {
+    id: number;
     name: string,
     description: string,
     photo: string,
@@ -29,4 +30,16 @@ export const AwardsGet = async() => {
 export const AwardsDetailGet = async(slug:string) => {
     const response = await apiClient.get(`/candidate_awards/${slug}`)
     return response.data
+}
+export const AwardsCandidateVote = async(slug: string, candidate_id: number) => {
+    try {
+        const response = await apiClient.post(`/candidate_awards/${slug}/vote/`, {
+            candidate_id
+          });    
+          
+        return response.data;
+    }
+    catch(err) {
+        console.log(err);
+    }
 }
