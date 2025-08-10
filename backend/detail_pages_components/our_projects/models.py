@@ -3,8 +3,11 @@ from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatedFields, TranslatableModel
 
+from search.handler import SearchableMixin
+from slugify import slugify as ascii_slugify
 
-class OurProject(TranslatableModel):
+
+class OurProject(SearchableMixin, TranslatableModel):
     translations = TranslatedFields(
         name         = models.CharField(max_length=100, verbose_name="Название"),
         announcement = models.TextField(verbose_name="Анонс"),
@@ -22,9 +25,21 @@ class OurProject(TranslatableModel):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            name = self.safe_translation_getter('name', any_language=True)
-            self.slug = slugify(name)
-        super().save(*args, **kwargs)
+            name = self.safe_translation_getter('name') or ''
+            base = ascii_slugify(name) or 'item'
+
+            max_len = self._meta.get_field('slug').max_length or 50
+            slug = base[:max_len]
+            i = 2
+            qs = type(self).objects.all()
+            if self.pk:
+                qs = qs.exclude(pk=self.pk)
+            while qs.filter(slug=slug).exists():
+                suffix = f'-{i}'
+                slug = f"{base[:max_len - len(suffix)]}{suffix}"
+                i += 1
+
+            self.slug = slug
 
     def __str__(self):
         return self.safe_translation_getter('name', any_language=True)
