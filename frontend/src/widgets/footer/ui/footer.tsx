@@ -53,15 +53,15 @@ export function Footer() {
                             <div className={styles.networksWrapper}>
                                 <a href='https://m.vk.com/flnka?ysclid=mdw0udbkzv817370940' target="_blank" rel="noopener noreferrer" className={styles.networkElem}>
                                     <Image className={styles.imageNetwork} src={'/images/linksNetwork/vk.svg'} width={40} height={40} alt='Группа vk'/>
-                                    <a href="">Вконтакте</a>
+                                    <p>Вконтакте</p>
                                 </a>
                                 <a href='https://t.me/flnka' target="_blank" rel="noopener noreferrer" className={styles.networkElem}>
                                     <Image className={styles.imageNetwork} src={'/images/linksNetwork/telegram.svg'} width={40} height={40} alt='telegram'/>
-                                    <a href="">Телеграм</a>
+                                    <p>Телеграм</p>
                                 </a>
                                 <a href='https://rutube.ru/channel/24706323/?ysclid=mdw0vhyitu469300817' target="_blank" rel="noopener noreferrer" className={styles.networkElem}>
                                     <Image className={styles.imageNetwork} src={'/images/linksNetwork/rutube.svg'} width={40} height={40} alt='rutube'/>
-                                    <a href="">Рутюб</a>
+                                    <p>Рутюб</p>
                                 </a>
                             </div>
 
