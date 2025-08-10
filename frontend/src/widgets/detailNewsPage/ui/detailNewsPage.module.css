@@ -57,7 +57,7 @@
     display: none;
 }
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .title {
         font-size: var(--s18);
     }

@@ -5,7 +5,7 @@
     margin: 1.66rem 0;
 }
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .separator {
         margin: .833rem 0;
     }

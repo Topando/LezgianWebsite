@@ -1,14 +1,14 @@
 .container {
     padding: 2.5rem 11rem .33rem 11rem;
 
-    border-radius: 0.66rem;
     background: rgb(28, 51, 83);
 
     color: var(--white);
 }
 .mainContent {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 7.5rem;
 
     padding-bottom: 3.33rem;
 }
@@ -19,28 +19,44 @@
     max-width: 33%;
 }
 .title {
-    font-size: var(--s24);
-    font-weight: 700;
+    font-size: var(--s20);
+    font-weight: 600;
 
-    margin-bottom: 1.33rem;
+    margin-bottom: 1.29rem;
 }
 .content {
-    font-size: var(--s16);
+    font-size: var(--s18);
     font-weight: 500;
 
     display: flex;
     flex-direction: column;
-    gap: 1.7rem;
+    gap: 1.58rem;
+
+    color: #CDCDCD;
 }
 .content a {
-    color: var(--white);
+    color: #CDCDCD;
+}
+.content p {
+    color: #CDCDCD;
 }
 
-.addressBlock .content {
-    align-items: center;
-    text-align: center;
+.addressBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.addressBlock .title {
+
+.logoContainer {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: auto;
+}
+.logoContainer p {
+    max-width: 12rem;
     text-align: center;
 }
 .logo {
@@ -95,4 +111,44 @@
     font-size: var(--s12);
     color: #828282;
     text-align: center;
+}
+.contacts a{
+    display: block;
+    color: #CDCDCD;
+    font-size: var(--s18);
+    margin-top: 1rem;
+}
+
+
+@media (orientation: portrait) {
+    .mainContent {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        gap: 3.2rem;
+    }
+    .container {
+        padding: 1.66rem 0;
+    }
+    .block {
+        max-width: 100%;
+        text-align: center;
+    }
+    .navBlock .content {
+        align-items: center;
+        text-align: center;
+    }
+    .navBlock .title {
+        text-align: center;
+    }
+    .content {
+        gap: 1.75rem;
+    }
+    .addressBlock {
+        gap: 3.2rem;
+    }
+    .logoContainer {
+        margin-top: 1.45rem;
+    }
 }

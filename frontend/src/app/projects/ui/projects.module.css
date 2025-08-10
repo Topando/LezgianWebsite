@@ -90,7 +90,7 @@
 }
 
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .separatorMobile{
         display: block;
     }

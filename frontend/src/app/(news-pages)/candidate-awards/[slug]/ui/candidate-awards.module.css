@@ -74,10 +74,16 @@
 .candidateMainContent {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+button.active {
+    background-color: #474f57;
 }
 
 
-@media (max-width: 1000px){
+
+
+@media (orientation: portrait){
     .candidateContainer {
         border-radius: 0;
         box-shadow: none;
