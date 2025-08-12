@@ -84,7 +84,7 @@ export function Footer() {
                 <div>
                     <p className={styles.title}>{cmT('address')}</p>
                     <div className={styles.content}>
-                        <p>{cmT('moscow')}</p>
+                        <p>{data?.address}</p>
 
                         <div className={styles.logoContainer}>
                             <Image 

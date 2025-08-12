@@ -71,7 +71,7 @@
     }
     /*при изменении поменять calc в rightNav.module.css*/
     .rightNav {
-        padding:0 .625rem;
+        padding:0 var(--mobile-padding);
     }
 }
   

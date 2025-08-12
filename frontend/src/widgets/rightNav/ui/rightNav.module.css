@@ -25,7 +25,7 @@
     .rightNav {
         width: 100%;
         /*компенсация padding в layout*/
-        max-width: calc(100vw - 0.625rem*2); 
+        max-width: calc(100vw - var(--mobile-padding)*2); 
         overflow-x: hidden; 
 
     }

@@ -45,18 +45,24 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
       setError("Необходимо согласиться с обработкой персональных данных.");
       return;
     }
-    if (otherComment) {
-      formData.comment = `Запись на мероприятие:\n${otherComment}\nКомментарий:\n${formData.comment}`;
-    }
+    const payloadComment = otherComment
+    ? `Запись на мероприятие:\n${otherComment}\nКомментарий:\n${formData.comment}`
+    : formData.comment;
 
     try {
       const response = await sendFeedback(
-        formData.name,
-        formData.phone,
-        formData.email,
-        formData.comment
+        formData.name.trim(),
+        formData.phone.trim(),
+        formData.email.trim(),
+        payloadComment.trim()
       );
       if (response) {
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          comment: "",
+          check: true,})
         setIsSubmitted(true);
       } else {
         setError("Не удалось отправить заявку. Попробуйте снова.");
@@ -146,9 +152,9 @@ export function FeedbackForm({title = 'Обратная связь', otherCommen
 
 
 
-function PhoneInput({ value, onChange }: { 
-  value: string; 
-  onChange: (value: string) => void 
+function PhoneInput({ value, onChange }: {
+  value: string;
+  onChange: (value: string) => void;
 }) {
   const ref = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState(value);
@@ -162,33 +168,32 @@ function PhoneInput({ value, onChange }: {
         clearIncomplete: true,
         autoUnmask: true,
         placeholder: '_',
-        onincomplete: () => {
-          onChange('');
-        }
+        onincomplete: () => onChange(''),
       });
-      
       imRef.current.mask(ref.current);
-
-      if (value) {
-        ref.current.value = value;
-      }
     }
-
     return () => {
-      if (imRef.current) {
-        imRef.current.remove();
-      }
+      if (imRef.current) imRef.current.remove();
     };
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setInputValue(value);
-    
-    if (imRef.current) {
-      const unmasked = imRef.current.unmaskedvalue(value);
-      onChange(unmasked ? `+7${unmasked}` : '');
+  useEffect(() => {
+    setInputValue(value || '');
+    if (ref.current) {
+      ref.current.value = value || '';
+
+      const im = (ref.current as any).inputmask;
+      if (im && typeof im.setValue === 'function') {
+        im.setValue(value || '');
+      }
     }
+  }, [value]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    const im = (ref.current as any)?.inputmask;
+    const unmasked = im?.unmaskedvalue ? im.unmaskedvalue() : '';
+    onChange(unmasked ? `+7${unmasked}` : '');
   };
 
   return (

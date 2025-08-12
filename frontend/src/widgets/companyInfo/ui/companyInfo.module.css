@@ -70,3 +70,44 @@
     text-align: center;
     flex-shrink: 0;
 }
+
+
+@media (orientation: portrait) {
+  .container {
+    flex-direction: column;
+    width: calc(100vw - var(--mobile-padding) * 4);
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    height: auto;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+
+    /* ключевые строки */
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;         /* Firefox */
+  }
+  .nav::-webkit-scrollbar {        /* WebKit */
+    display: none;
+  }
+  .elem {
+    white-space: nowrap; 
+    padding: .5rem .66rem;
+  }
+  .separator {
+    margin-bottom: .833rem;
+  }
+  .buttonMore {
+    margin-top: .833rem;
+  }
+}

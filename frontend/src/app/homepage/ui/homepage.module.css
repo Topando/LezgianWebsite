@@ -33,9 +33,18 @@
     height: 100%;
     object-fit: cover;
 }
+.containerNews {
+    padding-bottom: 2rem;
+}
 
 @media (orientation: portrait){
     .containerImg {
         border-radius: .25rem;
+    }
+    .headerPage {
+        display:none;
+    }
+    .mobileSeparator {
+        display:none;
     }
 }

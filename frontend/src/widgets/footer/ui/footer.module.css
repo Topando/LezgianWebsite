@@ -45,6 +45,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .logoContainer {
@@ -90,8 +91,11 @@
 
     margin-right: .41rem;
 }
-.networkElem a {
+.networkElem p {
     text-decoration: underline;
+}
+.networkElem {
+    display: flex;
 }
 .localeSwitch {
     margin-top: auto;

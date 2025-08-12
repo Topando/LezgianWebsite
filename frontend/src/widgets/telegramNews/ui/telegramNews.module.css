@@ -79,5 +79,7 @@
     }
     .newsElem {
         padding: .66rem;
+        width: 8.33rem;
+        flex-shrink: 0;
     }
 }
