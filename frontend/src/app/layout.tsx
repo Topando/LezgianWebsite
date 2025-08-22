@@ -4,6 +4,7 @@ import { cookies as getCookies} from 'next/headers';
 import { Providers } from "./providers";
 import { GlobalLightboxProvider } from '@shared/context/GlobalLightboxContext';
 import ClientApp from "./ClientApp";
+import "yet-another-react-lightbox/styles.css";
 
 import "@styles/colors.css";
 import "@styles/fonts.css";

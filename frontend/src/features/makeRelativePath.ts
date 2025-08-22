@@ -12,7 +12,7 @@ export function replaceLocalhostWithBackend(url: string): string {
         const parsed = new URL(url);
 
         if (parsed.hostname === 'localhost' || parsed.hostname === '127.0.0.1') {
-        parsed.hostname = 'backend';
+        parsed.hostname = '';
         }
 
         return parsed.toString();

@@ -1,0 +1,34 @@
+# ---------- build stage ----------
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+# оптимизация для node-gyp (sharp/sass и т.п.)
+RUN apk add --no-cache libc6-compat python3 make g++
+
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# ставим зависимости
+COPY package*.json ./
+RUN npm install --no-audit --no-fund --progress=false
+
+# копируем исходники и билдим
+COPY . .
+RUN npm run build
+
+# ---------- production stage ----------
+FROM node:20-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000
+
+# создаём безопасного пользователя
+RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
+
+# копируем нужное из build-стейджа
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+USER nextjs
+EXPOSE 3000
+CMD ["npm", "run", "start"]

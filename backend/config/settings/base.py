@@ -14,8 +14,7 @@ LANG_INFO['lez'] = {
 BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
 MEDIA_URL = f"{BASE_URL}/media/"
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/media/'
-
+MEDIA_ROOT  = "/app/media"
 STATIC_ROOT = '/static/'
 
 from django.template.context_processors import media
