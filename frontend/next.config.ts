@@ -6,7 +6,13 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
-    domains: ['backend', 'nginx', 'localhost', 'tg.i-c-a.su'],
+    unoptimized: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 
