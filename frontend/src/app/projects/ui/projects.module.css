@@ -23,6 +23,9 @@
     aspect-ratio: 680 / 360;
     position: relative;
 }
+.container > * { 
+    min-width: 0; 
+}
 
 .imageContainer :global(img) {
     position: absolute;
@@ -90,7 +93,7 @@
 }
 
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .separatorMobile{
         display: block;
     }

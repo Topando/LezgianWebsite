@@ -126,7 +126,7 @@
 }
 
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .content p {
         font-size: var(--s14);
         line-height: 160%;

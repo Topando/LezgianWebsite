@@ -10,11 +10,15 @@ import Link from 'next/link';
 import { NewsType, newsGet } from '@/shared/api/endpoints/news';
 import { replaceLocalhostWithBackend } from '@/features/makeRelativePath';
 import { Separator } from '@/features/separator';
+import { Pagination } from '@/widgets/pagination';
+
 
 export function ProjectsPage() {
   const nT = useTranslations('namePages');
   const cT = useTranslations('common');
   const [data, setData] = useState<NewsType[]>([]);
+  const [pageData, setPageData] = useState<NewsType[]>([]);
+
 
   useEffect(() => {
     const getData = async () => {
@@ -35,7 +39,7 @@ export function ProjectsPage() {
         <Separator/>
 
         <div className={styles.container}>
-            {data.map((elem, ind) => (
+            {pageData.map((elem, ind) => (
                 <>
                 {ind !== 0 ? (
                     <div className={styles.separatorMobile}>
@@ -68,6 +72,7 @@ export function ProjectsPage() {
                 </>
             ))}
         </div>
+        <Pagination data={data} countOnePage={14} onPageChange={setPageData} />
     </div>
   );
 }

@@ -6,8 +6,7 @@ export interface SearchType {
     slug: string;
     announcement: string;
     image: string;
-    date?: Date;
-    place?: string;
+    model: string;
 }
 
 export const searchGet = async (q: string) => {

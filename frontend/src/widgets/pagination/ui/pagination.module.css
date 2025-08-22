@@ -4,6 +4,7 @@
     align-items: center;
 
     gap: 1.3rem;
+    padding-top: 2rem;
 }
 .buttonImg {
     display: contents;
@@ -29,7 +30,7 @@
     color: #314A6D;
 }
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .container {
         gap: 0;
         justify-content: space-between;

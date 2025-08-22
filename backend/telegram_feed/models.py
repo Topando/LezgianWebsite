@@ -1,12 +1,14 @@
 from django.db import models
 
-
 class TelegramPost(models.Model):
-    message_id = models.PositiveBigIntegerField(unique=True)
-    chat_id    = models.BigIntegerField()            # канал/группа
-    text       = models.TextField(blank=True)
-    photo_id   = models.CharField(max_length=200, blank=True)  # file_id фото
-    date       = models.DateTimeField()
+    channel = models.CharField(max_length=255, db_index=True)
+    post_id = models.BigIntegerField(db_index=True)  # <- добавили
+    text = models.TextField()
+    post_url = models.URLField()
+    photo = models.ImageField(upload_to="telegram_posts/", blank=True, null=True)
+    photo_url = models.URLField(blank=True, null=True)        # локальный абсолютный URL
+    photo_source_url = models.URLField(blank=True, null=True) # исходник (tg.i-c-a.su)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ["-date"]
+        unique_together = ("channel", "post_id")

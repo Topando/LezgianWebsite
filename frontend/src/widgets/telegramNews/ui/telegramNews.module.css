@@ -43,6 +43,7 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
+    border-radius: .33rem;
 }
 .photoContainer img {
     width: 100%;
@@ -57,7 +58,7 @@
 }
 
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .containerNews {
         overflow-x: auto;
         overflow-y: hidden;
@@ -78,5 +79,7 @@
     }
     .newsElem {
         padding: .66rem;
+        width: 8.33rem;
+        flex-shrink: 0;
     }
 }

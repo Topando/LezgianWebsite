@@ -5,6 +5,7 @@ import styles from './homepage.module.css';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 import { SectionsMainPage } from '@/shared/sectionsMainPage';
@@ -14,10 +15,14 @@ import { CompanyInfo } from '@/widgets/companyInfo';
 import { Awards } from '@/widgets/awards';
 import { newsGet, NewsType } from '@/shared/api/endpoints/news';
 import { replaceLocalhostWithBackend } from '@/features/makeRelativePath';
+import { Pagination } from '@/widgets/pagination';
+
 
 
 export function HomepageContent () {
   const [data, setData] = useState<NewsType[]>([]);
+  const [pageData, setPageData] = useState<NewsType[]>([]);
+  const cmT = useTranslations('common');
 
   useEffect(() => {
       const getData = async () => {
@@ -36,8 +41,11 @@ export function HomepageContent () {
         <div>
           <PageSectionsNav sections={SectionsMainPage()}/>
 
-          <p className={styles.headerPage}>ФЕДЕРАЛЬНАЯ ЛЕЗГИНСКАЯ НАЦИОНАЛЬНО-КУЛЬТУРНАЯ  АВТОНОМИЯ</p>
-          <Separator/>
+          <p className={styles.headerPage}>{cmT('full-name')}</p>
+          
+          <div className={styles.mobileSeparator}>
+            <Separator/>
+          </div>
 
           <CompanyInfo/>
           <Separator/>
@@ -46,7 +54,7 @@ export function HomepageContent () {
           <Separator/>
 
           <div className={styles.containerNews}>
-            {data.map((elem, ind) => (
+            {pageData.map((elem, ind) => (
               <>
               <Separator/>
 
@@ -66,6 +74,7 @@ export function HomepageContent () {
               </>
             ))}
           </div>
+          <Pagination data={data} countOnePage={8} onPageChange={setPageData} />
         </div>
     )
 }

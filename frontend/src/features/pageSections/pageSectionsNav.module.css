@@ -28,7 +28,7 @@
     background-color: var(--border-gray);
 }
 
-@media (max-width: 1000px) {
+@media (orientation: portrait) {
     .container {
       padding: 0.33rem;
   

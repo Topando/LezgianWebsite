@@ -60,7 +60,7 @@
 }
 
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .heading {
         font-size: var(--s20);
         font-weight: 500;

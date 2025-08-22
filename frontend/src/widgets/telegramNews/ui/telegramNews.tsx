@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { TelegramNewsGet, TelegramNewsType } from '@/shared/api/endpoints/telegram';
+import { replaceLocalhostWithBackend } from '@/features/makeRelativePath';
 
 export function TelegramNews() {
   const cT = useTranslations('common');
@@ -36,11 +37,11 @@ export function TelegramNews() {
       <div className={styles.containerNews}>
         {data.map((item, ind) => (
           <div className={styles.newsElem} key={ind}>
-            <a href='' target="_blank" rel="noopener noreferrer">
-              {item.photo_url && false && (
+            <a href={item.post_url} target="_blank" rel="noopener noreferrer">
+              {item.photo_url && (
                 <div className={styles.photoContainer}>
                   <Image
-                    src={item.photo_url}
+                    src={replaceLocalhostWithBackend(item.photo_url)}
                     alt={item.text.slice(0, 50)}
                     width={600}
                     height={400}

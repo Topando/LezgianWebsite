@@ -52,7 +52,7 @@
     height: .66rem;
 }
 
-@media (max-width: 1000px){
+@media (orientation: portrait){
     .headerPage {
         font-size: var(--s18);
         font-weight: 700;

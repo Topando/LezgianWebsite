@@ -2,6 +2,7 @@ from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
 from django.forms.widgets import ClearableFileInput
+from django.core.validators import FileExtensionValidator
 
 from media_library.models import MediaLibrary
 
@@ -21,17 +22,29 @@ class MultiClearableFileInput(ClearableFileInput):
 class MultiFileField(forms.FileField):
     widget = MultiClearableFileInput
 
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("validators", [
+            FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png"])
+        ])
+        super().__init__(*args, **kwargs)
+
     def clean(self, data, initial=None):
         files = data or []
         if self.required and not files:
             raise ValidationError(self.error_messages["required"], code="required")
+
+        # проверка каждого файла валидаторами
+        for f in files:
+            for validator in self.validators:
+                validator(f)
+
         return files
 
 
 class MultiImageAdminForm(forms.ModelForm):
     image = MultiFileField(
         label="Изображения",
-        help_text="Можно выбрать сразу несколько файлов.",
+        help_text="Можно выбрать сразу несколько файлов. (jpg, jpeg, png)",
         required=True,
     )
 

@@ -8,14 +8,12 @@ import { useEffect, useState, useMemo} from "react";
 import { ReportsType, reportsGet } from "@/shared/api/endpoints/reports";
 import { HtmlBlock } from "@/features/htmlBlock";
 import { Separator } from "@/features/separator";
-import { useRightNav } from '@/shared/context/RightNavContext';
 import { PageSectionsNav } from '@/features/pageSections/pageSectionsNav';
 
 
 export function ReportsPage () {
     const nT = useTranslations('namePages');
     const [data, setData] = useState<ReportsType[]>([]);
-    const { setContent } = useRightNav();
 
     useEffect(() => {
         const getData = async () => {
@@ -37,13 +35,10 @@ export function ReportsPage () {
         }));
     }, [data]);
     
-    useEffect(() => {
-        setContent(<PageSectionsNav sections={sections} />);
-        return () => setContent(null);
-    }, [sections, setContent]);
 
     return(
         <div className={styles.container}>
+            <PageSectionsNav sections={sections}/>
             <p className={styles.headerPage}>{nT('reports')}</p>
 
 
