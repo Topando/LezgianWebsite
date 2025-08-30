@@ -1,5 +1,5 @@
 from django.db import models
-from parler.models import TranslatedFields, TranslatableModel
+from parler.models import TranslatableModel, TranslatedFields
 
 
 class TypeDocument(TranslatableModel):

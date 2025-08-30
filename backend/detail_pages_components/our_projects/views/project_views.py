@@ -4,7 +4,10 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from detail_pages_components.our_projects.models import OurProject
-from detail_pages_components.our_projects.serializers.gallery_serializer import OurProjectsGallerySerializer, OurProjectDetailSerializer
+from detail_pages_components.our_projects.serializers.gallery_serializer import (
+    OurProjectDetailSerializer,
+    OurProjectsGallerySerializer,
+)
 
 
 class OurProjectsViewSet(mixins.ListModelMixin,

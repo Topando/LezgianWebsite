@@ -1,34 +1,39 @@
 import os
+import re
+import time
+from html import unescape
+from typing import Any
+
 import django
+import requests
+from django.conf import settings
+from django.core.files.base import ContentFile
+from django.db import transaction
+
+from .models import TelegramPost
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 
-import re
-import time
-import requests
-from typing import List, Dict, Any, Optional, Tuple
-from html import unescape
-from urllib.parse import urljoin
-from django.conf import settings
-from django.db import transaction
-from django.core.files.base import ContentFile
-from .models import TelegramPost
-
-EMOJI_PATTERN = re.compile("[" "\U0001F600-\U0001F64F" "\U0001F300-\U0001F5FF" "\U0001F680-\U0001F6FF" "\U0001F1E0-\U0001F1FF" "\u2702-\u27B0" "\u24C2-\U0001F251" "]+", flags=re.UNICODE)
+EMOJI_PATTERN = re.compile(
+    "[" "\U0001F600-\U0001F64F" "\U0001F300-\U0001F5FF" "\U0001F680-\U0001F6FF" "\U0001F1E0-\U0001F1FF" "\u2702-\u27B0" "\u24C2-\U0001F251" "]+",
+    flags=re.UNICODE)
 FLOOD_WAIT_RE = re.compile(r'FLOOD_WAIT_(\d+)', re.I)
 
-_cache: Dict[str, Dict[str, Any]] = {}
+_cache: dict[str, dict[str, Any]] = {}
 _last_call_ts: float = 0.0
 _MIN_GAP = 1.0
 
-def is_sticker(msg: Dict[str, Any]) -> bool:
+
+def is_sticker(msg: dict[str, Any]) -> bool:
     media = msg.get('media')
     if isinstance(media, dict) and media.get('_') == 'messageMediaDocument':
         doc = media.get('document', {})
         return doc.get('mime_type') == 'image/webp'
     return False
 
-def parse_message(msg: Dict[str, Any], channel: str) -> Dict[str, Any]:
+
+def parse_message(msg: dict[str, Any], channel: str) -> dict[str, Any]:
     raw_text = msg.get('message', '')
     clean_text = EMOJI_PATTERN.sub('', unescape(re.sub(r'<[^>]+>', '', raw_text))).strip()
     photo_url = None
@@ -38,7 +43,8 @@ def parse_message(msg: Dict[str, Any], channel: str) -> Dict[str, Any]:
     post_url = f"https://t.me/{channel.lstrip('@')}/{msg.get('id')}"
     return {'post_id': msg.get('id'), 'text': clean_text, 'photo_url': photo_url, 'post_url': post_url}
 
-def _fetch_json_with_backoff(url: str, retries: int = 4) -> Dict[str, Any]:
+
+def _fetch_json_with_backoff(url: str, retries: int = 4) -> dict[str, Any]:
     global _last_call_ts
     last_exc = None
     for attempt in range(retries):
@@ -85,7 +91,8 @@ def _fetch_json_with_backoff(url: str, retries: int = 4) -> Dict[str, Any]:
         raise last_exc
     raise RuntimeError("Request failed after retries")
 
-def _ext_from_content_type(ct: Optional[str]) -> str:
+
+def _ext_from_content_type(ct: str | None) -> str:
     if not ct:
         return ".jpg"
     ct = ct.lower().split(";")[0].strip()
@@ -99,9 +106,9 @@ def _ext_from_content_type(ct: Optional[str]) -> str:
         return ".gif"
     return ".jpg"
 
-def _fetch_binary_with_backoff(url: str, retries: int = 4) -> Tuple[Optional[bytes], Optional[str]]:
+
+def _fetch_binary_with_backoff(url: str, retries: int = 4) -> tuple[bytes | None, str | None]:
     global _last_call_ts
-    last_exc = None
     for attempt in range(retries):
         now = time.time()
         if now - _last_call_ts < _MIN_GAP:
@@ -122,7 +129,6 @@ def _fetch_binary_with_backoff(url: str, retries: int = 4) -> Tuple[Optional[byt
             resp.raise_for_status()
             return resp.content, resp.headers.get("Content-Type")
         except requests.HTTPError as e:
-            last_exc = e
             status = e.response.status_code if e.response is not None else None
             if status in (420, 429):
                 txt = ''
@@ -138,11 +144,11 @@ def _fetch_binary_with_backoff(url: str, retries: int = 4) -> Tuple[Optional[byt
                 time.sleep(1.0 * (2 ** attempt))
                 continue
             raise
-        except requests.RequestException as e:
-            last_exc = e
+        except requests.RequestException:
             time.sleep(0.8 * (attempt + 1))
             continue
     return None, None
+
 
 def _abs_media_url(u: str) -> str:
     if u.startswith("http://") or u.startswith("https://"):
@@ -152,14 +158,15 @@ def _abs_media_url(u: str) -> str:
         return base + u
     return u
 
-def fetch_and_parse_telegram_posts(channel: str, limit: int = 8, max_fetch: int = 64) -> List[Dict[str, Any]]:
+
+def fetch_and_parse_telegram_posts(channel: str, limit: int = 8, max_fetch: int = 64) -> list[dict[str, Any]]:
     key = f"{channel}:{limit}"
     now = time.time()
     cached = _cache.get(key)
     if cached and now - cached['time'] < 86400:
         return cached['data']
     fetch_limit = max(limit * 2, 16)
-    collected: List[Dict[str, Any]] = []
+    collected: list[dict[str, Any]] = []
     last_error = None
     while fetch_limit <= max_fetch and len(collected) < limit:
         try:
@@ -184,7 +191,8 @@ def fetch_and_parse_telegram_posts(channel: str, limit: int = 8, max_fetch: int 
         raise last_error
     return []
 
-def store_posts(channel: str, posts: List[Dict[str, Any]]) -> int:
+
+def store_posts(channel: str, posts: list[dict[str, Any]]) -> int:
     def abs_media_url(u: str) -> str:
         if u.startswith(("http://", "https://")):
             return u
@@ -197,10 +205,10 @@ def store_posts(channel: str, posts: List[Dict[str, Any]]) -> int:
         for p in posts:
             post = TelegramPost(
                 channel=channel,
-                post_id=p["post_id"],               # <- сохраняем
+                post_id=p["post_id"],  # <- сохраняем
                 text=p["text"],
                 post_url=p["post_url"],
-                photo_source_url=p.get("photo_url") # исходник
+                photo_source_url=p.get("photo_url")  # исходник
             )
             post.save()
             if p.get("photo_url"):
@@ -213,6 +221,8 @@ def store_posts(channel: str, posts: List[Dict[str, Any]]) -> int:
                     post.save(update_fields=["photo", "photo_url"])
             created += 1
     return created
+
+
 def fetch_and_store_telegram_posts(channel: str, limit: int = 8, max_fetch: int = 64) -> int:
     posts = fetch_and_parse_telegram_posts(channel, limit, max_fetch)
     return store_posts(channel, posts)

@@ -1,7 +1,7 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.utils.translation import get_language
 from django.conf import settings
+from django.utils.translation import get_language
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from search.search_registry import SEARCH_MODELS
 

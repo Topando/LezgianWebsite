@@ -1,4 +1,4 @@
-from rest_framework import mixins, generics
+from rest_framework import generics
 
 from contacts.models import SiteContacts
 from contacts.serializers import SiteContactsSerializer

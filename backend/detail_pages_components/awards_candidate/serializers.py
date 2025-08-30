@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from detail_pages_components.awards_candidate.models import Candidate, CandidateAwards
 
+
 class CandidateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Candidate

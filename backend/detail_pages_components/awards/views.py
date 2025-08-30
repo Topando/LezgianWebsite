@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from rest_framework import mixins
 from rest_framework.viewsets import GenericViewSet
 
 from detail_pages_components.awards.models import Award
-from detail_pages_components.awards.serializers import AwardsSerializer, AwardsDetailSerializer
+from detail_pages_components.awards.serializers import AwardsDetailSerializer, AwardsSerializer
 
 
 class AwardsViewSet(mixins.ListModelMixin,

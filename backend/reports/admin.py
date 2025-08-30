@@ -1,7 +1,6 @@
 # admin.py
 from django.contrib import admin
 from django_ckeditor_5.widgets import CKEditor5Widget
-from django import forms
 from parler.admin import TranslatableAdmin
 from parler.forms import TranslatableModelForm
 

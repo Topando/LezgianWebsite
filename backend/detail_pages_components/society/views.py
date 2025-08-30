@@ -2,7 +2,7 @@ from rest_framework import mixins
 from rest_framework.viewsets import GenericViewSet
 
 from detail_pages_components.society.models import Society
-from detail_pages_components.society.serializers import SocietySerializer, SocietyDetailSerializer
+from detail_pages_components.society.serializers import SocietyDetailSerializer, SocietySerializer
 
 
 class SocietyViewSet(mixins.ListModelMixin,

@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import include, path
 
 urlpatterns = [
     path('projects/', include('detail_pages_components.our_projects.urls')),

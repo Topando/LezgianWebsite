@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
-from django.forms.widgets import ClearableFileInput
 from django.core.validators import FileExtensionValidator
+from django.forms.widgets import ClearableFileInput
 
 from media_library.models import MediaLibrary
 

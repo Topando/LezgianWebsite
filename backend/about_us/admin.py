@@ -1,9 +1,10 @@
 from django.contrib import admin
-from django import forms
 from django_ckeditor_5.widgets import CKEditor5Widget
 from parler.admin import TranslatableAdmin
 from parler.forms import TranslatableModelForm
+
 from about_us.models import About
+
 
 class AboutAdminForm(TranslatableModelForm):
     class Meta:
