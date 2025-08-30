@@ -1,6 +1,8 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
+
 from .models import Candidate, CandidateAwards
+
 
 class CandidateInline(admin.TabularInline):
     model = Candidate

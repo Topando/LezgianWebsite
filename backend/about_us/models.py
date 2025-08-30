@@ -2,6 +2,7 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
 
+
 class About(TranslatableModel):
     translations = TranslatedFields(
         menu_title=models.CharField(max_length=255, verbose_name='Заголовок в меню'),

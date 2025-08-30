@@ -1,10 +1,9 @@
 from django.db import models
-from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
+from slugify import slugify as ascii_slugify
 
 from search.handler import SearchableMixin
-from slugify import slugify as ascii_slugify
 
 
 class Event(SearchableMixin, TranslatableModel):
@@ -18,6 +17,7 @@ class Event(SearchableMixin, TranslatableModel):
     date = models.DateField(verbose_name="Дата проведения")
     place = models.CharField(max_length=100, verbose_name="Место проведения")
     order = models.PositiveIntegerField(default=1, verbose_name="Сортировка")
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Мероприятие"

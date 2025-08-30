@@ -1,10 +1,9 @@
 from django.db import models
-from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
+from slugify import slugify as ascii_slugify
 
 from search.handler import SearchableMixin
-from slugify import slugify as ascii_slugify
 
 
 class Language(SearchableMixin, TranslatableModel):
@@ -16,6 +15,7 @@ class Language(SearchableMixin, TranslatableModel):
     slug = models.SlugField(verbose_name="Символьный код", blank=True, unique=True)
     image = models.ImageField(upload_to="our_projects/", verbose_name="Фотография", blank=True, null=True)
     order = models.PositiveIntegerField(default=1, verbose_name="Сортировка")
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Родной язык"

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Partners(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название")
     image = models.ImageField(upload_to='partners/', verbose_name="Фотография")

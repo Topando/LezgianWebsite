@@ -1,4 +1,3 @@
-from pickle import FALSE
 
 from django.db.models import F
 from rest_framework import mixins, status
@@ -6,9 +5,11 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from detail_pages_components.awards_candidate.models import CandidateAwards, Candidate
-from detail_pages_components.awards_candidate.serializers import AwardCandidateSerializer, \
-    AwardCandidateDetailSerializer
+from detail_pages_components.awards_candidate.models import Candidate, CandidateAwards
+from detail_pages_components.awards_candidate.serializers import (
+    AwardCandidateDetailSerializer,
+    AwardCandidateSerializer,
+)
 
 
 class CandidateAwardsViewSet(mixins.ListModelMixin,

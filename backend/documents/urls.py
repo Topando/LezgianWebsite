@@ -1,4 +1,3 @@
-from rest_framework import routers
 from rest_framework.routers import DefaultRouter
 
 from documents.views import DocumentViewSet

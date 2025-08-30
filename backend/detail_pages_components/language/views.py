@@ -1,12 +1,12 @@
 from rest_framework import mixins
 from rest_framework.viewsets import GenericViewSet
 
-from detail_pages_components.culture.models import Culture
-from detail_pages_components.culture.serializers import CultureSerializer, CultureDetailSerializer
 from detail_pages_components.history.models import History
-from detail_pages_components.history.serializers import HistorySerializer, HistoryDetailSerializer
 from detail_pages_components.language.models import Language
-from detail_pages_components.language.serializers import LanguageSerializer, LanguageDetailSerializer
+from detail_pages_components.language.serializers import (
+    LanguageDetailSerializer,
+    LanguageSerializer,
+)
 
 
 class LanguageViewSet(mixins.ListModelMixin,

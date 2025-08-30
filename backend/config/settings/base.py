@@ -1,6 +1,5 @@
-from pathlib import Path
 import os
-
+from pathlib import Path
 
 from django.conf.locale import LANG_INFO
 
@@ -15,9 +14,8 @@ BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
 MEDIA_URL = f"{BASE_URL}/media/"
 STATIC_URL = '/static/'
 MEDIA_ROOT  = "/app/media"
-STATIC_ROOT = '/static/'
+STATIC_ROOT = '/app/static'
 
-from django.template.context_processors import media
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -72,7 +70,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000", 
+    "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
 

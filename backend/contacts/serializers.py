@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import SiteContacts, PhonesContacts
+
+from .models import PhonesContacts, SiteContacts
 
 
 class PhoneContactSerializer(serializers.ModelSerializer):

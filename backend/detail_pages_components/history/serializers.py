@@ -1,5 +1,7 @@
 from parler_rest.serializers import TranslatableModelSerializer
+
 from detail_pages_components.history.models import History
+
 
 class HistorySerializer(TranslatableModelSerializer):
     translation_fields = ['name', 'announcement']

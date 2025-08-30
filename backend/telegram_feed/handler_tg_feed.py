@@ -1,6 +1,7 @@
 # telegram_feed/simple_fetch.py
-import os, asyncio
-from datetime import timezone
+import os
+from datetime import UTC
+
 from telegram import Bot
 
 BOT_TOKEN  = os.getenv("BOT_TOKEN")
@@ -36,7 +37,7 @@ async def fetch_latest_posts(limit: int = 8) -> list[dict]:
                 "id": msg.message_id,
                 "text": msg.text_html or msg.caption_html or "",
                 "photo_url": photo_url,
-                "date": msg.date.astimezone(timezone.utc).isoformat(),
+                "date": msg.date.astimezone(UTC).isoformat(),
             }
         )
 

@@ -1,6 +1,8 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
-from documents.models import TypeDocument, Document
+
+from documents.models import Document, TypeDocument
+
 
 class DocumentInline(admin.TabularInline):
     model = Document

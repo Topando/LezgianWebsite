@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class MediaLibrary(models.Model):
     image = models.ImageField(upload_to='media-library')
 

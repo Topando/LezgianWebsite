@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from rest_framework import mixins
 from rest_framework.viewsets import GenericViewSet
 
 from detail_pages_components.events.models import Event
-from detail_pages_components.events.serializers import EventSerializer, EventDetailSerializer
+from detail_pages_components.events.serializers import EventDetailSerializer, EventSerializer
 
 
 class EventViewSet(mixins.ListModelMixin,

@@ -7,4 +7,4 @@ class OurProjectsConfig(AppConfig):
     verbose_name = "Наши проекты"
 
     def ready(self):
-        import detail_pages_components.our_projects.signals.gallery_signals
+        pass

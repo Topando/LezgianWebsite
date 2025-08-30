@@ -1,6 +1,7 @@
 from django.db import models
 from solo.models import SingletonModel
 
+
 class SiteContacts(SingletonModel):
     email     = models.EmailField("E-mail", blank=True)
     address   = models.CharField("Адрес", max_length=255, blank=True)
@@ -15,3 +16,6 @@ class SiteContacts(SingletonModel):
 class PhonesContacts(models.Model):
     site = models.ForeignKey(SiteContacts, on_delete=models.CASCADE, related_name="phones")
     phone  = models.CharField("Телефон", max_length=50, blank=True)
+
+    def __str__(self):
+        return self.phone

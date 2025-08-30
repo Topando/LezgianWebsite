@@ -17,3 +17,7 @@ django-parler-rest>=2.2
 django-solo>=2.4.0
 requests
 python-slugify
+pre-commit
+django-stubs==5.1.1
+djangorestframework-stubs==3.15.2
+types-requests

@@ -1,5 +1,7 @@
 from parler_rest.serializers import TranslatableModelSerializer
+
 from detail_pages_components.culture.models import Culture
+
 
 class CultureSerializer(TranslatableModelSerializer):
     translation_fields = ["name", "announcement"]

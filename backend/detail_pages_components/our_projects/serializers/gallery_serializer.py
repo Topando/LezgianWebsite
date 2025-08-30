@@ -1,5 +1,4 @@
 from parler_rest.serializers import TranslatableModelSerializer
-from rest_framework import serializers
 
 from detail_pages_components.our_projects.models import OurProject
 

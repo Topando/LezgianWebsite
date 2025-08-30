@@ -1,5 +1,6 @@
 from django.db.models import Q
 
+
 class SearchableMixin:
     search_fields = (
         "translations__name",
