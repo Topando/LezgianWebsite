@@ -1,5 +1,7 @@
 from parler_rest.serializers import TranslatableModelSerializer
+
 from detail_pages_components.awards.models import Award
+
 
 class AwardsSerializer(TranslatableModelSerializer):
     translation_fields = ['name', 'announcement']

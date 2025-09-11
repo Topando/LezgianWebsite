@@ -1,7 +1,7 @@
 from django.contrib import admin
 from solo.admin import SingletonModelAdmin
 
-from .models import SiteContacts, PhonesContacts
+from .models import PhonesContacts, SiteContacts
 
 
 class PhonesContactsInline(admin.TabularInline):

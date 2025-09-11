@@ -2,6 +2,7 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from parler.models import TranslatableModel, TranslatedFields
 from slugify import slugify as ascii_slugify
+
 from search.handler import SearchableMixin
 
 
@@ -14,6 +15,7 @@ class Culture(SearchableMixin, TranslatableModel):
     slug = models.SlugField(blank=True, unique=True)
     image = models.ImageField(upload_to="our_projects/", blank=True, null=True)
     order = models.PositiveIntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Культура"

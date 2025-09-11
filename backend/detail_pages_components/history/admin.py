@@ -1,6 +1,8 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
+
 from detail_pages_components.history.models import History
+
 
 @admin.register(History)
 class HistoryAdmin(TranslatableAdmin):

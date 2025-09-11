@@ -4,7 +4,10 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from detail_pages_components.our_projects.models import OurProject
-from detail_pages_components.our_projects.serializers.gallery_serializer import OurProjectsGallerySerializer, OurProjectDetailSerializer
+from detail_pages_components.our_projects.serializers.gallery_serializer import (
+    OurProjectDetailSerializer,
+    OurProjectsGallerySerializer,
+)
 
 
 class OurProjectsViewSet(mixins.ListModelMixin,
@@ -15,7 +18,7 @@ class OurProjectsViewSet(mixins.ListModelMixin,
     lookup_field = 'slug'
 
     def get_queryset(self):
-        return OurProject.objects.all().order_by('-order')
+        return OurProject.objects.all().order_by('-order', '-id')
 
     def list(self, request, *args, **kwargs):
         cache_key = "our_projects_gallery"
