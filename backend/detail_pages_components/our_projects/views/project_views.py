@@ -18,7 +18,7 @@ class OurProjectsViewSet(mixins.ListModelMixin,
     lookup_field = 'slug'
 
     def get_queryset(self):
-        return OurProject.objects.all().order_by('-order')
+        return OurProject.objects.all().order_by('-order', '-id')
 
     def list(self, request, *args, **kwargs):
         cache_key = "our_projects_gallery"
