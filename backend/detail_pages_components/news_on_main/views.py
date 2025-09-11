@@ -48,7 +48,7 @@ class NewsOnMainViewSet(mixins.ListModelMixin,
     lookup_field = 'slug'
 
     def get_queryset(self):
-        return NewsOnMain.objects.all().order_by('-order')
+        return NewsOnMain.objects.all().order_by('-order', '-id')
 
     def get_serializer_class(self):
         if self.action == 'retrieve':
@@ -66,9 +66,7 @@ class NewsOnMainViewSet(mixins.ListModelMixin,
         feed = []
 
         for Model, date_fields in FEED_MODELS:
-            # базовый queryset
             qs = Model.objects.all()
-            # если у менеджера есть active_translations — применяем его
             if hasattr(Model.objects, "active_translations"):
                 qs = Model.objects.active_translations(language_code=lang)
 

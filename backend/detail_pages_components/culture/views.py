@@ -13,7 +13,7 @@ class CultureViewSet(mixins.ListModelMixin,
     lookup_field = 'slug'
 
     def get_queryset(self):
-        return Culture.objects.all().order_by('-order')
+        return Culture.objects.all().order_by('-order', '-id')
 
     def get_serializer_class(self):
         if self.action == 'retrieve':
