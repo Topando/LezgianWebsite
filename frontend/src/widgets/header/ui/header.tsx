@@ -17,7 +17,7 @@ const accordancTable: Record<string, string> = {
   culture: 'culture',
   history: 'history',
   language: 'language',
-  society: 'culture',
+  society: 'society',
   ourproject: 'projects',
   project: 'projects',
   congress: 'congresses',

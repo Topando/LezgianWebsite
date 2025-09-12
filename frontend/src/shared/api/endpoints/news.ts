@@ -8,6 +8,7 @@ export interface NewsType {
     image?: string;
     date?: Date;
     place?: string;
+    model?: string;
 }
 export interface DetailNewsType {
     id: number;
