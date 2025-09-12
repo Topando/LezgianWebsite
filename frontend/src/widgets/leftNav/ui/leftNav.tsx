@@ -46,9 +46,9 @@ export function LeftNav() {
         <div className={styles.comInfo}>
           <Image
             className={styles.logo}
-            src={'/images/logo.png'}
-            width={40}
-            height={40}
+            src={'/images/logo.svg'}
+            width={400}
+            height={400}
             alt='Логотип'
           />
           <div>

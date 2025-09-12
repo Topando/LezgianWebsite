@@ -4,7 +4,7 @@ export const SectionsMainPage = () => {
   const t = useTranslations('namePages');
 
   return [
-    { id: '/', label: t('main'), link: true },
+    { id: '/', label: t('rightMain'), link: true },
     { id: '/awards', label: t('awards'), link: true },
     { id: '/events', label: t('events'), link: true },
     { id: '/society', label: t('society'), link: true },
